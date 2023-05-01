@@ -4,4 +4,4 @@ const IndexPage: NextPage = () => {
   return <div>Hello World</div>;
 };
 
-export default IndexPage
+export default IndexPage;
