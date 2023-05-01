@@ -39,5 +39,8 @@
     "bn.js": "5.2.1",
     "@types/react": "18.0.23",
     "libsodium-wrappers": "https://registry.yarnpkg.com/@favware/skip-dependency/-/skip-dependency-1.2.1.tgz"
+  },
+  "dependencies": {
+    "tailwind-merge": "^1.12.0"
   }
 }

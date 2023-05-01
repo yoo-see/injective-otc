@@ -5340,6 +5340,7 @@ __metadata:
     eslint-plugin-react-hooks: ^4.4.0
     eslint-plugin-unused-imports: ^2.0.0
     prettier: ^2.7.1
+    tailwind-merge: ^1.12.0
     typescript: ^4.8.4
   languageName: unknown
   linkType: soft
@@ -6262,6 +6263,13 @@ __metadata:
   bin:
     svgo: bin/svgo
   checksum: b92f71a8541468ffd0b81b8cdb36b1e242eea320bf3c1a9b2c8809945853e9d8c80c19744267eb91cabf06ae9d5fff3592d677df85a31be4ed59ff78534fa420
+  languageName: node
+  linkType: hard
+
+"tailwind-merge@npm:^1.12.0":
+  version: 1.12.0
+  resolution: "tailwind-merge@npm:1.12.0"
+  checksum: 5ef323eec1051c4aa9626e29498f6c058dbbb242ca8156aa298de41ada3eda05a8f5f1260a57112c155f63b2e94c4b4ccab5386d60fae54de07aac6d9dbc60e4
   languageName: node
   linkType: hard
 
