@@ -9,20 +9,21 @@ const Sidebar = () => {
   };
 
   return (
-    <nav className="flex flex-col justify-between h-screen w-64 bg-gray-800 px-4 py-8">
+    <nav className="flex flex-col justify-between h-screen w-64 bg-[#242731] px-4 py-8">
       <Link href="/" className="py-4">
         <SvgIcon.Logo />
       </Link>
       <div className="flex flex-col h-full mt-36">
-        <div className="py-4 px-4 text-white border-b-[0.5px] border-b-[rgba(255,255,255,0.12)] border-solid">
-          OTC Market
+        <div className="flex items-center py-4 border-b-[0.5px] border-b-[rgba(255,255,255,0.12)] border-solid">
+          <SvgIcon.ArrowLeftRight />
+          <div className="pl-2 text-white text-lg">OTC Market</div>
         </div>
         <div className="flex flex-col h-full py-3 gap-1">
           <Link
             href="/buy"
-            className={`py-3.5 px-4 text-white rounded-[10px] ${
+            className={`py-3.5 px-4 text-white text-base rounded-[10px] ${
               isActive("/buy")
-                ? "bg-gray-900 text-[#2E63F6] border-l-2 border-solid border-[#2E63F6]"
+                ? "bg-grey/10 text-[#2E63F6] border-l-2 border-solid border-[#2E63F6]"
                 : "hover:bg-gray-700"
             }`}
           >
@@ -30,9 +31,9 @@ const Sidebar = () => {
           </Link>
           <Link
             href="/sell"
-            className={`py-3.5 px-4 text-white rounded-[10px] ${
+            className={`py-3.5 px-4 text-white text-base rounded-[10px] ${
               isActive("/sell")
-                ? "bg-gray-900 text-[#2E63F6] border-l-2 border-solid border-[#2E63F6]"
+                ? "bg-grey/10 text-[#2E63F6] border-l-2 border-solid border-[#2E63F6]"
                 : "hover:bg-gray-700"
             }`}
           >
