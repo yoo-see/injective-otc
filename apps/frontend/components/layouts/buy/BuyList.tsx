@@ -19,14 +19,14 @@ const BuyList = () => {
         </div>
       </header>
       <body className="mt-5">
-        <table className="w-[884px] text-[#EAEAEA]">
-          <thead className="h-10">
-            <tr className="text-left">
-              <th className="pl-3">All</th>
-              <th>Price</th>
-              <th>Collateral</th>
-              <th>Time</th>
-              <th className="pr-3">Transaction</th>
+        <table className="w-[884px] Pretendard text-[#FFFFFF] font-normal text-[15px] leading-[18px]">
+          <thead className="h-10 Pretendard text-[#FFFFFF]  font-normal text-[15px] leading-[18px]">
+            <tr className="text-left ">
+              <th className="pl-3 font-normal">All</th>
+              <th className="font-normal">Price</th>
+              <th className="font-normal">Collateral</th>
+              <th className="font-normal">Time</th>
+              <th className="font-normal">Transaction</th>
             </tr>
           </thead>
           <tbody>
@@ -96,17 +96,12 @@ const BuyList = () => {
                   </div>
                 </div>
               </td>
-              <td>
-                <div className="flex flex-row items-center gap-1.5 p-0">
-                  {" "}
-                  <EtherIcon />
-                  <span>1519.00</span>
-                </div>
-              </td>
               <td className="mr-3">
                 <span>2023.03.25 16:00</span>
               </td>
-              <td></td>
+              <td>
+                <button>buy</button>
+              </td>
             </tr>
           </tbody>
         </table>
