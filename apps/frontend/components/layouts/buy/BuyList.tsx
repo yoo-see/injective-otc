@@ -20,13 +20,13 @@ const BuyList = () => {
       </header>
       <body className="mt-5">
         <table className="w-[884px] text-[#EAEAEA]">
-          <thead className="p-12">
+          <thead className="h-10">
             <tr className="text-left">
-              <th>All</th>
+              <th className="pl-3">All</th>
               <th>Price</th>
               <th>Collateral</th>
               <th>Time</th>
-              <th>Transaction</th>
+              <th className="pr-3">Transaction</th>
             </tr>
           </thead>
           <tbody>
@@ -59,33 +59,51 @@ const BuyList = () => {
               </tr>)
  
             }} */}
-            <tr>
-              <td className=" flex flex-row items-center gap-2 p-0;">
-                <div>1.</div>
-                <EtherIcon />
-                <div className="flex flex-col items-start gap-0.5 h-9 p-0">
-                  <span className="flex flex-row items-start gap-0.5 p-0;">
-                    <div>5</div>
-                    <div>ETH</div>
-                  </span>
-                  <span className="Pretendard font-normal text-[13px] leading-4 text-[#C6C6C6]">
-                    On ethereum
-                  </span>
+            <tr className="">
+              <td>
+                <div className="flex items-center h-[66px] gap-2 ml-3 p-0">
+                  <div>1.</div>
+                  <EtherIcon />
+                  <div className="flex flex-col items-start gap-0.5 h-9 p-0">
+                    <span className="flex flex-row items-start gap-0.5">
+                      <div>5</div>
+                      <div>ETH</div>
+                    </span>
+                    <span className="Pretendard font-normal text-[13px] leading-4 text-[#C6C6C6]">
+                      On ethereum
+                    </span>
+                  </div>
                 </div>
               </td>
               <td>
-                <image></image>
-                <span></span>
+                <div className="flex flex-row items-center gap-1.5 p-0">
+                  {" "}
+                  <EtherIcon />
+                  <span>1519.00</span>
+                </div>
               </td>
-              <td>
-                {" "}
-                <image></image>
-                <div>
-                  <span>5 ETH</span>
-                  <span>On ethereum</span>
+              <td className="flex items-center h-[66px] gap-2 p-0">
+                <div className="flex items-center h-[66px] gap-2 ml-3 p-0">
+                  <EtherIcon />
+                  <div className="flex flex-col items-start gap-0.5 h-9 p-0">
+                    <span className="flex flex-row items-start gap-0.5">
+                      <div>5</div>
+                      <div>ETH</div>
+                    </span>
+                    <span className="Pretendard font-normal text-[13px] leading-4 text-[#C6C6C6]">
+                      On ethereum
+                    </span>
+                  </div>
                 </div>
               </td>
               <td>
+                <div className="flex flex-row items-center gap-1.5 p-0">
+                  {" "}
+                  <EtherIcon />
+                  <span>1519.00</span>
+                </div>
+              </td>
+              <td className="mr-3">
                 <span>2023.03.25 16:00</span>
               </td>
               <td></td>
