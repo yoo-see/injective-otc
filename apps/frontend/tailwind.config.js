@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         "omi-blue": "#2864ff;",
         "omi-black": "#22252e;",
+        "grey/2": "#EAEAEA;",
         "grey/9": "#22252e;",
         "grey/10": "#191B23;",
       },

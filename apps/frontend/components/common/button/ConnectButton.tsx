@@ -1,20 +1,24 @@
-interface Props {}
+import { twMerge } from "tailwind-merge";
 
-const ConnectButton: React.FC<Props> = ({}) => {
+interface Props {
+  text?: sting;
+  onClick?: () => void;
+}
+
+const ConnectButton: React.FC<Props> = ({ text, onClick }) => {
+  const connectClassName = text
+    ? "bg-grey/9 font-semibold text-grey/2"
+    : "bg-white font-medium text-omi-blue";
+
+  const mergedClassName = twMerge(
+    "px-4 py-2.5 rounded-[100px] text-[15px]",
+    connectClassName,
+  );
+
   return (
-    <div
-      className={
-        "flex flex-row justify-center items-center bg-grey/9 gap-2 w-[155px] h-11 px-4 py-2.5 rounded-[100px]"
-      }
-    >
-      <div
-        className={
-          "Pretendard w-[103px] h-[21px] text-[15px] leading-[142.34%] flex items-center text-center text-[#EAEAEA]"
-        }
-      >
-        OxEB60...4315
-      </div>
-    </div>
+    <button className={mergedClassName} onClick={onClick}>
+      {text ? text : "Connect"}
+    </button>
   );
 };
 
