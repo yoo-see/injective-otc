@@ -1,8 +1,6 @@
-import React from "react";
-
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Logo from "public/svg/omi-logo.svg";
+import { SvgIcon } from "public/icon";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -13,7 +11,7 @@ const Sidebar = () => {
   return (
     <nav className="flex flex-col justify-between h-screen w-64 bg-gray-800 px-4 py-8">
       <Link href="/" className="py-4">
-        <Logo />
+        <SvgIcon.Logo />
       </Link>
       <div className="flex flex-col h-full mt-36">
         <div className="py-4 px-4 text-white border-b-[0.5px] border-b-[rgba(255,255,255,0.12)] border-solid">
