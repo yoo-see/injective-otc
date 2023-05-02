@@ -1,7 +1,13 @@
+import Listing from "components/sell/Listing";
 import { NextPage } from "next";
 
 const SellPage: NextPage = () => {
-  return <div>sell</div>;
+  return (
+    <div>
+      <Listing />
+      sell
+    </div>
+  );
 };
 
 export default SellPage;
