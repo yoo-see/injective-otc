@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 
 interface Props {
-  text?: sting;
+  text?: string;
   onClick?: () => void;
 }
 

@@ -2,9 +2,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { SvgIcon } from "public/icon";
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
   const router = useRouter();
-  const isActive = (href) => {
+  const isActive = (href: string) => {
     return router.pathname === href;
   };
 

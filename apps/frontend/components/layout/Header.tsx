@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import ConnectButton from "../common/button/ConnectButton";
 
-const Header = () => {
+const Header: React.FC = () => {
   const [connectText, setConnectText] = useState("");
 
   const getAccountsKeplr = async () => {
@@ -58,6 +58,23 @@ const Header = () => {
             ],
             features: ["eth-address-gen", "eth-key-sign"],
           });
+
+          const chainId = "injective-1";
+          await window.keplr.enable(chainId);
+          const offlineSigner = window.getOfflineSigner(chainId);
+          const accounts = await offlineSigner.getAccounts();
+
+          const address = accounts[0].address;
+          const shortenedAddress =
+            address.substring(0, 6) +
+            "..." +
+            address.substring(address.length - 4);
+
+          localStorage.setItem(
+            "KEPLR_ADDRESS",
+            JSON.stringify(shortenedAddress),
+          );
+          setConnectText(shortenedAddress);
         } catch {
           alert("Failed to suggest the chain");
         }
@@ -65,18 +82,6 @@ const Header = () => {
         alert("Please use the recent version of keplr extension");
       }
     }
-
-    const chainId = "injective-1";
-    await window.keplr.enable(chainId);
-    const offlineSigner = window.getOfflineSigner(chainId);
-    const accounts = await offlineSigner.getAccounts();
-    const address = accounts[0].address;
-    const shortenedAddress =
-      address.substring(0, 6) + "..." + address.substring(address.length - 4);
-
-    // accounts정보 localStorage, setState
-    localStorage.setItem("KEPLR_ADDRESS", JSON.stringify(shortenedAddress));
-    setConnectText(shortenedAddress);
   };
 
   const loadAddress = async () => {

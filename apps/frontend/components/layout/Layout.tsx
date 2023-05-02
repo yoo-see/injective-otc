@@ -1,7 +1,11 @@
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
-const Layout = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+const Layout: React.FC<Props> = ({ children }) => {
   return (
     <div className="flex justify-center">
       <Sidebar />
