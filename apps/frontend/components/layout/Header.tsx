@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ConnectButton from "../common/button/ConnectButton";
 
 const Header: React.FC = () => {
-  const [connectText, setConnectText] = useState("");
+  const [connectText, setConnectText] = useState<string>("");
 
   const getAccountsKeplr = async () => {
     if (!window.getOfflineSigner || !window.keplr) {
