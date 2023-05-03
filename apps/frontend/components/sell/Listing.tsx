@@ -111,6 +111,7 @@ const Listing = () => {
                   onChange={handleGetCoinValues}
                   className={`Pretendard font-medium text-xl leading-6 text-[#191B23] text-right focus:outline-0 `}
                   placeholder="0"
+                  min="0"
                 />
               </div>
             </div>
@@ -128,6 +129,7 @@ const Listing = () => {
                   onChange={handleGetCoinValues}
                   className={`Pretendard font-medium text-xl leading-6 text-[#191B23] text-right focus:outline-0 `}
                   placeholder="0.00"
+                  min="0"
                 />
               </div>
             </div>
@@ -157,6 +159,7 @@ const Listing = () => {
                   onChange={handleGetCoinValues}
                   className={`Pretendard font-medium text-xl leading-6 text-[#191B23] text-right focus:outline-0 `}
                   placeholder="0"
+                  min="0"
                 />
               </div>
             </div>
