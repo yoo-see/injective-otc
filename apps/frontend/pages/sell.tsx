@@ -18,7 +18,7 @@ const SellPage: NextPage = () => {
   };
 
   return (
-    <div className="h-full">
+    <div>
       {isSelling ? (
         <CompletedContainer
           backText={"Listing"}

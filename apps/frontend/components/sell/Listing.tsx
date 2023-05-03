@@ -86,12 +86,11 @@ const Listing: React.FC<Props> = ({ setIsSelling }) => {
   }, [amountValue, priceValue, collateralValue]);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mt-[55px]">
       <div className="bg-[#1F212C] px-8 py-11 rounded-[20px]">
         <div className="font-semibold text-white text-[28px] leading-[42px] tracking-[-0.24px]">
           Listing
         </div>
-
         <div className="mt-6">
           <div>
             <div className=" flex flex-col items-start p-0 gap-6">
