@@ -35,7 +35,7 @@ const OrderInformation: React.FC<Props> = ({
   );
 
   return (
-    <div className="px-8 py-8">
+    <div className="px-6 py-8">
       <button className="flex items-center" onClick={goToBack}>
         <SvgIcon.ChevronLeft />
         <p className="ml-1 font-medium text-xl text-white">Back</p>
