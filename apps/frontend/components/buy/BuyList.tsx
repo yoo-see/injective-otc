@@ -1,7 +1,21 @@
 import EtherIcon from "public/svg/ether-icon.svg";
 import { twMerge } from "tailwind-merge";
 
-const BuyList = () => {
+interface Props {
+  setIsSelected: (isSelected: boolean) => void;
+  setChain: (chain: string) => void;
+  setToken: (token: string) => void;
+  setCount: (price: number) => void;
+  setPrice: (price: number) => void;
+}
+
+const BuyList: React.FC<Props> = ({
+  setIsSelected,
+  setChain,
+  setToken,
+  setCount,
+  setPrice,
+}) => {
   const h1MergedClassName = twMerge(
     "Poppins w-[165px] h-[42px] not-italic font-medium text-[28px] leading-[42px] text-white opacity-80",
   );
@@ -9,10 +23,26 @@ const BuyList = () => {
     "Poppins w-[33px] h-[27px] not-italic font-normal text-lg leading-[27px] text-[#EAEAEA]",
   );
 
+  const onClickBuy = () => {
+    setChain("On ethereum");
+    setToken("ETH");
+    setCount(5);
+    setPrice(1519.01);
+    setIsSelected(true);
+  };
+
   const handleCreateTr = (ele: string) => {
+    const onClickBuy = () => {
+      setChain("On ethereum");
+      setToken("ETH");
+      setCount(5);
+      setPrice(1519.01);
+      setIsSelected(true);
+    };
+
     const tr = (
-      <tr className="h-[66px] w-full">
-        <td className="align-middle w-[170px]">
+      <tr className="h-[66px] flex flex-row items-center justify-between w-full">
+        <td className="align-middle w-full flex flex-row items-center">
           <div className="flex items-center gap-2 ml-3 p-0">
             <div>1.</div>
             <EtherIcon />
@@ -21,19 +51,19 @@ const BuyList = () => {
                 <div>5</div>
                 <div>ETH</div>
               </span>
-              <span className="Pretendard font-normal text-[13px] leading-4 text-[#C6C6C6]">
+              <span className="font-normal text-[13px] leading-4 text-[#C6C6C6]">
                 On ethereum
               </span>
             </div>
           </div>
         </td>
-        <td className="w-[170px]">
+        <td className="w-full flex flex-row items-center">
           <div className="flex flex-row items-center gap-1.5 p-0">
             <EtherIcon />
             <span>1519.00</span>
           </div>
         </td>
-        <td className="w-[170px] align-middle gap-2 p-0">
+        <td className="w-full align-middle gap-2 p-0 flex flex-row items-center">
           <div className="flex items-center gap-2 p-0">
             <EtherIcon />
             <div className="flex flex-col items-start gap-0.5 h-9 p-0">
@@ -47,11 +77,14 @@ const BuyList = () => {
             </div>
           </div>
         </td>
-        <td className="w-[170px] mr-3">
+        <td className="w-full mr-3 flex flex-row items-center">
           <span>2023.03.25 16:00</span>
         </td>
-        <td className="w-[170px] align-middle text-center p-0">
-          <button className="bg-omi-blue w-[79px] h-8 rounded-[14px]">
+        <td className="w-full align-middle text-center p-0 flex flex-row items-center">
+          <button
+            className="bg-omi-blue w-[79px] h-8 rounded-[14px]"
+            onClick={onClickBuy}
+          >
             Buy
           </button>
         </td>
@@ -60,7 +93,7 @@ const BuyList = () => {
   };
 
   return (
-    <div className="px-6 ">
+    <div className="px-6 py-8">
       <header>
         <div className="flex flex-row items-center gap-2 w-[214px] h-[42px] p-0">
           <h1 className={h1MergedClassName}>OTC Market</h1>
@@ -68,22 +101,30 @@ const BuyList = () => {
           <h2 className={h2MergedClassName}>Buy</h2>
         </div>
       </header>
-      <div className="mt-5">
-        <table className="block w-[884px] Pretendard text-[#FFFFFF] font-normal text-[15px] leading-[18px]">
-          <thead className="w-[884px] h-10 Pretendard text-[#FFFFFF]  font-normal text-[15px] leading-[18px] bg-[#22252E]">
-            <tr className="text-left">
-              <th className="pl-3 w-[170px] font-normal p-0">All</th>
-              <th className="w-[170px] font-normal p-0">Price</th>
-              <th className="w-[170px] font-normal p-0">Collateral</th>
-              <th className="w-[170px] font-normal p-0">Time</th>
-              <th className="w-[170px] font-normal text-center p-0">
+      <div className="mt-5 w-full">
+        <table className="block w-full text-[#FFFFFF] font-normal text-[15px] leading-[18px]">
+          <thead className="w-full flex flex-row items-center justify-between h-10 text-[#FFFFFF]  font-normal text-[15px] leading-[18px] bg-[#22252E]">
+            <tr className="flex flex-row justify-between w-full">
+              <th className="pl-3 w-full flex justify-start font-normal p-0">
+                All
+              </th>
+              <th className="w-full flex justify-start font-normal p-0">
+                Price
+              </th>
+              <th className="w-full flex justify-start font-normal p-0">
+                Collateral
+              </th>
+              <th className="w-full flex justify-start font-normal p-0">
+                Time
+              </th>
+              <th className="w-full flex justify-start font-normal text-center p-0">
                 Transaction
               </th>
             </tr>
           </thead>
           <tbody className="block w-full max-h-[594px] font-normal overflow-y-scroll scrollbar-hide">
-            <tr className="h-[66px] w-full">
-              <td className="align-middle w-[170px]">
+            <tr className="h-[66px] flex flex-row items-center justify-between w-full">
+              <td className="align-middle w-full flex flex-row items-center">
                 <div className="flex items-center gap-2 ml-3 p-0">
                   <div>1.</div>
                   <EtherIcon />
@@ -92,19 +133,19 @@ const BuyList = () => {
                       <div>5</div>
                       <div>ETH</div>
                     </span>
-                    <span className="Pretendard font-normal text-[13px] leading-4 text-[#C6C6C6]">
+                    <span className="font-normal text-[13px] leading-4 text-[#C6C6C6]">
                       On ethereum
                     </span>
                   </div>
                 </div>
               </td>
-              <td className="w-[170px]">
+              <td className="w-full flex flex-row items-center">
                 <div className="flex flex-row items-center gap-1.5 p-0">
                   <EtherIcon />
                   <span>1519.00</span>
                 </div>
               </td>
-              <td className="w-[170px] align-middle gap-2 p-0">
+              <td className="w-full align-middle gap-2 p-0 flex flex-row items-center">
                 <div className="flex items-center gap-2 p-0">
                   <EtherIcon />
                   <div className="flex flex-col items-start gap-0.5 h-9 p-0">
@@ -118,17 +159,20 @@ const BuyList = () => {
                   </div>
                 </div>
               </td>
-              <td className="w-[170px] mr-3">
+              <td className="w-full mr-3 flex flex-row items-center">
                 <span>2023.03.25 16:00</span>
               </td>
-              <td className="w-[170px] align-middle text-center p-0">
-                <button className="bg-omi-blue w-[79px] h-8 rounded-[14px]">
+              <td className="w-full align-middle text-center p-0 flex flex-row items-center">
+                <button
+                  className="bg-omi-blue w-[79px] h-8 rounded-[14px]"
+                  onClick={onClickBuy}
+                >
                   Buy
                 </button>
               </td>
             </tr>
-            {/* {Data.map((ele)=>{
-              return handleCreateTr(ele)
+            {/* {Data.map((ele) => {
+              return handleCreateTr(ele);
             })} */}
           </tbody>
         </table>

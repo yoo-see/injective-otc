@@ -5,6 +5,7 @@ import IconChevronCircleLeft from "./svg/chevron-circle-left.svg";
 import IconChevronLeft from "./svg/chevron-left.svg";
 import IconClose from "./svg/close.svg";
 import IconEther from "./svg/ether.svg";
+import IconDashboard from "./svg/layout-dashboard.svg";
 import IconLogo from "./svg/omi-logo.svg";
 import IconSearch from "./svg/search.svg";
 import IconUsdc from "./svg/usdc.svg";
@@ -22,4 +23,5 @@ export const SvgIcon = {
   Ether: IconEther,
   Usdc: IconUsdc,
   Vector: IconVector,
+  Dashboard: IconDashboard,
 };

@@ -7,17 +7,21 @@ import { twMerge } from "tailwind-merge";
 interface Props {
   balance: number;
   price: number;
+  count: number;
   token: string;
   chain: string;
   goToBack: () => void;
+  setIsOrdering: (IsOrdering: boolean) => void;
 }
 
 const OrderInformation: React.FC<Props> = ({
   balance,
   price,
+  count,
   token,
   chain,
   goToBack,
+  setIsOrdering,
 }) => {
   const isLowBalance = balance < price;
   const amountBoxClassName = isLowBalance
@@ -33,6 +37,11 @@ const OrderInformation: React.FC<Props> = ({
     "ml-1 font-normal text-[15px]",
     balanceTextClassName,
   );
+
+  const onClickOrdering = () => {
+    if (isLowBalance) return;
+    setIsOrdering(true);
+  };
 
   return (
     <div className="px-6 py-8">
@@ -87,15 +96,21 @@ const OrderInformation: React.FC<Props> = ({
                 />
                 <p className="ml-2 text-grey/4 font-normal text-[15px]">|</p>
                 <p className="ml-1 text-[rgba(255,255,255,0.8)] font-normal text-[17px]">
-                  {token}
+                  {chain}
                 </p>
               </div>
-              <p className="text-grey/1 font-semibold text-lg">{chain}</p>
+              <p className="text-grey/1 font-semibold text-lg">
+                {count} {token}
+              </p>
             </div>
           </div>
 
           <div className="pt-6">
-            <Button text={"Create order"} disabled={isLowBalance} />
+            <Button
+              text={"Create order"}
+              disabled={isLowBalance}
+              onClick={onClickOrdering}
+            />
           </div>
         </div>
       </div>
