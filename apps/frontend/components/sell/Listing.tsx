@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 import SelectTokenModal from "components/sell/SelectTokenModal";
 import { SvgIcon } from "public/icon";
 
+interface Props {
+  setIsSelling: (IsSelling: boolean) => void;
+}
+
 //// mockup data
 const mockUpTokensArray = [
   { image: SvgIcon.Ether, token: "Ether" },
@@ -14,7 +18,7 @@ const mockUpTokensArray = [
   { image: SvgIcon.Ether, token: "Solana" },
 ];
 
-const Listing = () => {
+const Listing: React.FC<Props> = ({ setIsSelling }) => {
   // quantities of tokens
   const [amountValue, setAmountValue] = useState(0);
   const [priceValue, setPriceValue] = useState(0);
@@ -69,6 +73,10 @@ const Listing = () => {
   //list to sell button active & inactive
   const [sellButtonActive, setSellButtonActive] = useState(false);
 
+  const onClickSelling = () => {
+    setIsSelling(true);
+  };
+
   useEffect(() => {
     if (amountValue && priceValue && collateralValue) {
       setSellButtonActive(true);
@@ -76,125 +84,129 @@ const Listing = () => {
       setSellButtonActive(false);
     }
   }, [amountValue, priceValue, collateralValue]);
-  return (
-    <div className="bg-[#1F212C] w-[492px] px-8 py-11 rounded-[20px]">
-      <div className="Poppins w-[198px] h-[42px] font-semibold text-white text-[28px] leading-[42px] tracking-[-0.24px]">
-        Listing
-      </div>
 
-      <div className="mt-6">
-        <div>
-          <div className=" flex flex-col items-start p-0 gap-6">
-            <div>
-              <span className="font-normal text-[15px] leading-[18px] text-[#EAEAEA]">
-                Amount
-              </span>
-              <div className="bg-white flex flex-row justify-between items-center w-[428px] h-[52px] px-5 py-[15px] rounded-[10px] mt-2">
-                <div className="flex flex-row items-center gap-2 p-0   hover:cursor-pointer">
+  return (
+    <div className="flex justify-center">
+      <div className="bg-[#1F212C] px-8 py-11 rounded-[20px]">
+        <div className="font-semibold text-white text-[28px] leading-[42px] tracking-[-0.24px]">
+          Listing
+        </div>
+
+        <div className="mt-6">
+          <div>
+            <div className=" flex flex-col items-start p-0 gap-6">
+              <div>
+                <span className="font-normal text-[15px] leading-[18px] text-[#EAEAEA]">
+                  Amount
+                </span>
+                <div className="bg-white flex flex-row justify-between items-center w-[428px] h-[52px] px-5 py-[15px] rounded-[10px] mt-2">
+                  <div className="flex flex-row items-center gap-2 p-0   hover:cursor-pointer">
+                    <div
+                      onClick={handleAmountModalState}
+                      className="flex flex-row items-center gap-1.5 h-[27px] p-0 "
+                    >
+                      <SvgIcon.Ether />
+                      <div className="font-midium text-base leading-[27px] text-[#191B23]">
+                        {listToken}
+                      </div>
+                    </div>
+                    <SvgIcon.Vector
+                      onClick={handleAmountModalState}
+                      className="hover:scale-150"
+                    />
+                  </div>
+                  <input
+                    type="number"
+                    name="amount"
+                    onChange={handleGetCoinValues}
+                    className={`Pretendard font-medium text-xl leading-6 text-[#191B23] text-right focus:outline-0 `}
+                    placeholder="0"
+                    min="0"
+                  />
+                </div>
+              </div>
+              <div>
+                <span className="font-normal text-[15px] leading-[18px] text-[#EAEAEA]">
+                  Price
+                </span>
+                <div className="bg-white flex flex-row justify-between items-center w-[428px] h-[52px] px-5 py-[15px] rounded-[10px] mt-2">
+                  <div className="flex flex-row items-center gap-2 p-0">
+                    <SvgIcon.Usdc />
+                  </div>
+                  <input
+                    type="number"
+                    name="price"
+                    onChange={handleGetCoinValues}
+                    className={`Pretendard font-medium text-xl leading-6 text-[#191B23] text-right focus:outline-0 `}
+                    placeholder="0.00"
+                    min="0"
+                  />
+                </div>
+              </div>
+              <div>
+                <span className="font-normal text-[15px] leading-[18px] text-[#EAEAEA]">
+                  Collateral
+                </span>
+                <div className="bg-white flex flex-row justify-between items-center w-[428px] h-[52px] px-5 py-[15px] rounded-[10px] mt-2">
                   <div
-                    onClick={handleAmountModalState}
-                    className="flex flex-row items-center gap-1.5 h-[27px] p-0 "
-                  >
-                    <SvgIcon.Ether />
-                    <div className="font-midium text-base leading-[27px] text-[#191B23]">
-                      {listToken}
-                    </div>
-                  </div>
-                  <SvgIcon.Vector
-                    onClick={handleAmountModalState}
-                    className="hover:scale-150"
-                  />
-                </div>
-                <input
-                  type="number"
-                  name="amount"
-                  onChange={handleGetCoinValues}
-                  className={`Pretendard font-medium text-xl leading-6 text-[#191B23] text-right focus:outline-0 `}
-                  placeholder="0"
-                  min="0"
-                />
-              </div>
-            </div>
-            <div>
-              <span className="font-normal text-[15px] leading-[18px] text-[#EAEAEA]">
-                Price
-              </span>
-              <div className="bg-white flex flex-row justify-between items-center w-[428px] h-[52px] px-5 py-[15px] rounded-[10px] mt-2">
-                <div className="flex flex-row items-center gap-2 p-0">
-                  <SvgIcon.Usdc />
-                </div>
-                <input
-                  type="number"
-                  name="price"
-                  onChange={handleGetCoinValues}
-                  className={`Pretendard font-medium text-xl leading-6 text-[#191B23] text-right focus:outline-0 `}
-                  placeholder="0.00"
-                  min="0"
-                />
-              </div>
-            </div>
-            <div>
-              <span className="font-normal text-[15px] leading-[18px] text-[#EAEAEA]">
-                Collateral
-              </span>
-              <div className="bg-white flex flex-row justify-between items-center w-[428px] h-[52px] px-5 py-[15px] rounded-[10px] mt-2">
-                <div
-                  onClick={handleCollateralModalState}
-                  className="flex flex-row items-center gap-2 p-0 hover:cursor-pointer"
-                >
-                  <div className="flex flex-row items-center gap-1.5 h-[27px] p-0">
-                    <SvgIcon.Ether />
-                    <div className="font-midium text-base leading-[27px] text-[#191B23]">
-                      {collateralToken}
-                    </div>
-                  </div>
-                  <SvgIcon.Vector
                     onClick={handleCollateralModalState}
-                    className="hover:scale-150"
+                    className="flex flex-row items-center gap-2 p-0 hover:cursor-pointer"
+                  >
+                    <div className="flex flex-row items-center gap-1.5 h-[27px] p-0">
+                      <SvgIcon.Ether />
+                      <div className="font-midium text-base leading-[27px] text-[#191B23]">
+                        {collateralToken}
+                      </div>
+                    </div>
+                    <SvgIcon.Vector
+                      onClick={handleCollateralModalState}
+                      className="hover:scale-150"
+                    />
+                  </div>
+                  <input
+                    type="number"
+                    name="collateral"
+                    onChange={handleGetCoinValues}
+                    className={`Pretendard font-medium text-xl leading-6 text-[#191B23] text-right focus:outline-0 `}
+                    placeholder="0"
+                    min="0"
                   />
                 </div>
-                <input
-                  type="number"
-                  name="collateral"
-                  onChange={handleGetCoinValues}
-                  className={`Pretendard font-medium text-xl leading-6 text-[#191B23] text-right focus:outline-0 `}
-                  placeholder="0"
-                  min="0"
-                />
               </div>
             </div>
           </div>
+          <div className="mt-11">
+            {sellButtonActive ? (
+              <button
+                onClick={onClickSelling}
+                className={`bg-[#2864ff] w-full h-14 rounded-lg left-0 top-0 font-normal text-base leading-6 text-white`}
+              >
+                Make a list to sell
+              </button>
+            ) : (
+              <button
+                className={`bg-grey/5 w-full h-14 rounded-lg left-0 top-0 font-normal text-base leading-6 text-white`}
+              >
+                Make a list to sell
+              </button>
+            )}
+          </div>
         </div>
-        <div className="mt-11">
-          {sellButtonActive ? (
-            <button
-              className={`bg-[#2864ff] w-full h-14 rounded-lg left-0 top-0 font-normal text-base leading-6 text-white`}
-            >
-              Make a list to sell
-            </button>
-          ) : (
-            <button
-              className={`bg-grey/5 w-full h-14 rounded-lg left-0 top-0 font-normal text-base leading-6 text-white`}
-            >
-              Make a list to sell
-            </button>
-          )}
-        </div>
+        {amountModalOpen && (
+          <SelectTokenModal
+            handleModalFunc={handleAmountModalState}
+            getTokenSelect={getTokenSelect}
+            tokens={mockUpTokensArray}
+          />
+        )}
+        {collateralModalOpen && (
+          <SelectTokenModal
+            handleModalFunc={handleCollateralModalState}
+            getTokenSelect={getTokenSelect}
+            tokens={mockUpTokensArray}
+          />
+        )}
       </div>
-      {amountModalOpen && (
-        <SelectTokenModal
-          handleModalFunc={handleAmountModalState}
-          getTokenSelect={getTokenSelect}
-          tokens={mockUpTokensArray}
-        />
-      )}
-      {collateralModalOpen && (
-        <SelectTokenModal
-          handleModalFunc={handleCollateralModalState}
-          getTokenSelect={getTokenSelect}
-          tokens={mockUpTokensArray}
-        />
-      )}
     </div>
   );
 };
