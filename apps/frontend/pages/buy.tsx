@@ -4,8 +4,10 @@ import BuyList from "components/buy/BuyList";
 import OrderInformation from "components/buy/OrderInformation";
 import CompletedContainer from "components/common/container/CompletedContainer";
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 
 const BuyPage: NextPage = () => {
+  const router = useRouter();
   const [isOrdering, setIsOrdering] = useState<boolean>(false);
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const [chain, setChain] = useState<string>("");
@@ -22,6 +24,10 @@ const BuyPage: NextPage = () => {
     setIsSelected(false);
   };
 
+  const goToDashboard = () => {
+    router.push("/board");
+  };
+
   return (
     <div className="h-full">
       {isOrdering ? (
@@ -32,7 +38,7 @@ const BuyPage: NextPage = () => {
           subDescription={
             "you can receive the coins through a push notification message."
           }
-          goToButton={() => console.log("go to Dashboard")}
+          goToButton={goToDashboard}
         />
       ) : (
         <>

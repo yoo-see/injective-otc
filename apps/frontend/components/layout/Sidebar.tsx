@@ -13,12 +13,12 @@ const Sidebar: React.FC = () => {
       <Link href="/" className="py-4">
         <SvgIcon.Logo />
       </Link>
-      <div className="flex flex-col h-full mt-36">
+      <div className="flex flex-col h-full mt-28">
         <div className="flex items-center py-4 border-b-[0.5px] border-b-[rgba(255,255,255,0.12)] border-solid">
           <SvgIcon.ArrowLeftRight />
           <div className="pl-2 text-white text-lg">OTC Market</div>
         </div>
-        <div className="flex flex-col h-full py-3 gap-1">
+        <div className="flex flex-col py-3 gap-1">
           <Link
             href="/buy"
             className={`py-3.5 px-4 text-white text-base rounded-[10px] ${
@@ -40,6 +40,10 @@ const Sidebar: React.FC = () => {
             Sell
           </Link>
         </div>
+        <Link href="/board" className="flex items-center mt-12">
+          <SvgIcon.Dashboard />
+          <div className="pl-2 text-white font-semibold text-lg">Dashboard</div>
+        </Link>
       </div>
     </nav>
   );
