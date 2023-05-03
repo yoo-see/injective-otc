@@ -33,7 +33,11 @@ const CompletedContainer: React.FC<Props> = ({
           </p>
           <p className="font-normal text-base text-grey/2">{description}</p>
           <p className="font-normal text-base text-grey/2">{subDescription}</p>
-          <Button className="mt-[52px]" onClick={goToButton} />
+          <Button
+            className="mt-[52px]"
+            text="Go to Dashboard"
+            onClick={goToButton}
+          />
         </div>
       </div>
     </div>
