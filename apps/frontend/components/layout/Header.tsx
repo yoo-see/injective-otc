@@ -99,7 +99,7 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-row items-center gap-3 w-full h-[84px] pt-10 pb-0 px-6 bg-grey/10">
+    <div className="flex flex-row items-center justify-end gap-3 w-full h-[84px] pt-10 pb-0 px-6 bg-grey/10">
       <ConnectButton text={connectText} />
     </div>
   );
