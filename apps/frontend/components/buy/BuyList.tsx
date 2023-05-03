@@ -60,7 +60,7 @@ const BuyList = () => {
   };
 
   return (
-    <div className="px-6 ">
+    <div className="px-6 py-8">
       <header>
         <div className="flex flex-row items-center gap-2 w-[214px] h-[42px] p-0">
           <h1 className={h1MergedClassName}>OTC Market</h1>
@@ -127,8 +127,8 @@ const BuyList = () => {
                 </button>
               </td>
             </tr>
-            {/* {Data.map((ele)=>{
-              return handleCreateTr(ele)
+            {/* {Data.map((ele) => {
+              return handleCreateTr(ele);
             })} */}
           </tbody>
         </table>

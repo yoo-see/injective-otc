@@ -1,5 +1,6 @@
+import BuyList from "components/buy/BuyList";
 // import OrderInformation from "components/buy/OrderInformation";
-import CompletedContainer from "components/common/container/CompletedContainer";
+// import CompletedContainer from "components/common/container/CompletedContainer";
 import { NextPage } from "next";
 
 const BuyPage: NextPage = () => {
@@ -7,6 +8,7 @@ const BuyPage: NextPage = () => {
 
   return (
     <div className="h-full">
+      <BuyList />
       {/* <OrderInformation
         balance={345}
         price={1234}
@@ -14,7 +16,7 @@ const BuyPage: NextPage = () => {
         chain={"5ETH"}
         goToBack={goToBack}
       /> */}
-      <CompletedContainer
+      {/* <CompletedContainer
         backText={"OTC Market"}
         goToBack={() => console.log("뒤로가기")}
         title={"test"}
@@ -23,7 +25,7 @@ const BuyPage: NextPage = () => {
           "you can receive the coins through a push notification message."
         }
         goToButton={() => console.log("go to Dashboard")}
-      />
+      /> */}
     </div>
   );
 };
