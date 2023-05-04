@@ -1,4 +1,5 @@
 import IconAlertCircle from "./svg/alert-circle.svg";
+import IconArrowLeftRightWhite from "./svg/arrow-left-right-white.svg";
 import IconArrowLeftRight from "./svg/arrow-left-right.svg";
 import IconBell from "./svg/bell.svg";
 import IconChevronCircleLeft from "./svg/chevron-circle-left.svg";
@@ -16,6 +17,7 @@ export const SvgIcon = {
   Search: IconSearch,
   Bell: IconBell,
   ArrowLeftRight: IconArrowLeftRight,
+  ArrowLeftRightWhite: IconArrowLeftRightWhite,
   ChevronLeft: IconChevronLeft,
   ChevronCircleLeft: IconChevronCircleLeft,
   AlertCircle: IconAlertCircle,
