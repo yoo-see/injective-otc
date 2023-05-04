@@ -5,6 +5,9 @@ import OrderInformation from "components/buy/OrderInformation";
 import CompletedContainer from "components/common/container/CompletedContainer";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
+import { useSetRecoilState } from "recoil";
+
+import { tabState } from "../states";
 
 const BuyPage: NextPage = () => {
   const router = useRouter();
@@ -14,6 +17,7 @@ const BuyPage: NextPage = () => {
   const [token, setToken] = useState<string>("");
   const [price, setPrice] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
+  const setActiveTab = useSetRecoilState(tabState);
 
   const goToBack = () => {
     setIsSelected(false);
@@ -25,6 +29,7 @@ const BuyPage: NextPage = () => {
   };
 
   const goToDashboard = () => {
+    setActiveTab({ tab: "Buyer" });
     router.push("/board");
   };
 

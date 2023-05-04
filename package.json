@@ -42,6 +42,7 @@
     "libsodium-wrappers": "https://registry.yarnpkg.com/@favware/skip-dependency/-/skip-dependency-1.2.1.tgz"
   },
   "dependencies": {
+    "recoil": "^0.7.7",
     "tailwind-merge": "^1.12.0"
   }
 }
