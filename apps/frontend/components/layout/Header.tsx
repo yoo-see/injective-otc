@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { KeplrCard } from "components/common/container/NotifiCard";
+
 import ConnectButton from "../common/button/ConnectButton";
 
 const Header: React.FC = () => {
@@ -63,8 +65,8 @@ const Header: React.FC = () => {
           await window.keplr.enable(chainId);
           const offlineSigner = window.getOfflineSigner(chainId);
           const accounts = await offlineSigner.getAccounts();
-
           const address = accounts[0].address;
+
           const shortenedAddress =
             address.substring(0, 6) +
             "..." +
@@ -100,7 +102,8 @@ const Header: React.FC = () => {
 
   return (
     <div className="flex flex-row items-center justify-end gap-3 w-full h-[84px] pt-10 pb-0 px-6 bg-grey/10">
-      <ConnectButton text={connectText} />
+      <KeplrCard />
+      <ConnectButton text={connectText} onClick={loadAddress} />
     </div>
   );
 };

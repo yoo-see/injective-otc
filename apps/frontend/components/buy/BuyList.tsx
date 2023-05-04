@@ -1,4 +1,4 @@
-import EtherIcon from "public/svg/ether-icon.svg";
+import { SvgIcon } from "public/icon";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
@@ -45,7 +45,7 @@ const BuyList: React.FC<Props> = ({
         <td className="align-middle w-full flex flex-row items-center">
           <div className="flex items-center gap-2 ml-3 p-0">
             <div>1.</div>
-            <EtherIcon />
+            <SvgIcon.Weth />
             <div className="flex flex-col items-start gap-0.5 h-9 p-0">
               <span className="flex flex-row items-start gap-0.5">
                 <div>5</div>
@@ -59,13 +59,13 @@ const BuyList: React.FC<Props> = ({
         </td>
         <td className="w-full flex flex-row items-center">
           <div className="flex flex-row items-center gap-1.5 p-0">
-            <EtherIcon />
+            <SvgIcon.Weth />
             <span>1519.00</span>
           </div>
         </td>
         <td className="w-full align-middle gap-2 p-0 flex flex-row items-center">
           <div className="flex items-center gap-2 p-0">
-            <EtherIcon />
+            <SvgIcon.Weth />
             <div className="flex flex-col items-start gap-0.5 h-9 p-0">
               <span className="flex flex-row items-start gap-0.5">
                 <div>5</div>
@@ -127,7 +127,7 @@ const BuyList: React.FC<Props> = ({
               <td className="align-middle w-full flex flex-row items-center">
                 <div className="flex items-center gap-2 ml-3 p-0">
                   <div>1.</div>
-                  <EtherIcon />
+                  <SvgIcon.Weth />
                   <div className="flex flex-col items-start gap-0.5 h-9 p-0">
                     <span className="flex flex-row items-start gap-0.5">
                       <div>5</div>
@@ -141,13 +141,13 @@ const BuyList: React.FC<Props> = ({
               </td>
               <td className="w-full flex flex-row items-center">
                 <div className="flex flex-row items-center gap-1.5 p-0">
-                  <EtherIcon />
+                  <SvgIcon.Weth />
                   <span>1519.00</span>
                 </div>
               </td>
               <td className="w-full align-middle gap-2 p-0 flex flex-row items-center">
                 <div className="flex items-center gap-2 p-0">
-                  <EtherIcon />
+                  <SvgIcon.Weth />
                   <div className="flex flex-col items-start gap-0.5 h-9 p-0">
                     <span className="flex flex-row items-start gap-0.5">
                       <div>5</div>

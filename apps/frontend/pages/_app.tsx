@@ -1,3 +1,4 @@
+import { KeplrWalletProvider } from "context/KeplrWalletProvider";
 import { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 
@@ -6,11 +7,13 @@ import "../styles/globals.css";
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <RecoilRoot>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </RecoilRoot>
+    <KeplrWalletProvider>
+      <RecoilRoot>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </RecoilRoot>
+    </KeplrWalletProvider>
   );
 }
 

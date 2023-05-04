@@ -1,11 +1,14 @@
 import { SvgIcon } from "public/icon";
 
-interface Props {}
+interface Props {
+  onClick: () => void;
+}
 
-const NotificationButton: React.FC<Props> = ({}) => {
+const NotificationButton: React.FC<Props> = ({ onClick }) => {
   return (
     <div className={"relative w-11 h-11"}>
       <button
+        onClick={onClick}
         className={`flex justify-center items-center bg-grey/9 w-11 h-11 rounded-[999px]`}
       >
         <SvgIcon.Bell />

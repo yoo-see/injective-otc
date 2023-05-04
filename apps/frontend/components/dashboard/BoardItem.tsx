@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { SvgIcon } from "public/icon";
 import { PngImage } from "public/img";
 import { twMerge } from "tailwind-merge";
@@ -146,13 +145,12 @@ const BoardItem: React.FC<Props> = ({
           </p>
           <div className="bg-[#383943] rounded-[10px] py-4 px-5 flex items-center justify-between">
             <div className="flex items-center">
-              <Image
-                className="mr-2"
-                src={activeTab === "buyer" ? PngImage.USDC : PngImage.ImgToken}
-                alt="Sample Image"
-                width={32}
-                height={32}
-              />
+              {activeTab === "buyer" ? (
+                <SvgIcon.Usdt className="w-8 h-8 mr-2" />
+              ) : (
+                <SvgIcon.Weth className="w-8 h-8 mr-2" />
+              )}
+
               <p className="font-normal text-[17px] text-[rgba(255,255,255,0.8)]">
                 | {activeTab === "buyer" ? amount : token}
               </p>
@@ -171,13 +169,12 @@ const BoardItem: React.FC<Props> = ({
           </p>
           <div className="bg-[#383943] rounded-[10px] py-4 px-5 flex items-center justify-between">
             <div className="flex items-center">
-              <Image
-                className="mr-2"
-                src={activeTab === "buyer" ? PngImage.ImgToken : PngImage.USDC}
-                alt="Sample Image"
-                width={32}
-                height={32}
-              />
+              {activeTab === "buyer" ? (
+                <SvgIcon.Weth className="w-8 h-8 mr-2" />
+              ) : (
+                <SvgIcon.Usdt className="w-8 h-8 mr-2" />
+              )}
+
               <p className="font-normal text-[17px] text-[rgba(255,255,255,0.8)]">
                 | {activeTab === "buyer" ? token : amount}
               </p>
