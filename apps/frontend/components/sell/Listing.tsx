@@ -7,7 +7,7 @@ interface Props {
   setIsSelling: (IsSelling: boolean) => void;
 }
 
-//// mockup data
+//list of Tokens & collateral Tokens
 const listTokensArray = [{ token: "INJ" }, { token: "wETH" }];
 const collateralTokensArray = [
   { token: "INJ" },
@@ -16,6 +16,26 @@ const collateralTokensArray = [
 ];
 
 const Listing: React.FC<Props> = ({ setIsSelling }) => {
+  // amount of INJ in wallet
+  const [walletInjAmount, setWalletInjAmount] = useState(0);
+  const [walletAddress, setWalletAddress] = useState(
+    "inj1qmft4qnukhqm95w0ts85555j38tsuntcg6gfa5",
+  );
+
+  useEffect(() => {
+    fetch(
+      ` https://lcd-injective.keplr.app/cosmos/bank/v1beta1/balances/${walletAddress}`,
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        let injAmount = response.balances[0].amount.substring(0, 6) / 1000000;
+        setWalletInjAmount(injAmount);
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }, []);
+
   // quantities of tokens
   const [amountValue, setAmountValue] = useState(0);
   const [priceValue, setPriceValue] = useState(0);
@@ -96,7 +116,7 @@ const Listing: React.FC<Props> = ({ setIsSelling }) => {
                   Amount
                 </span>
                 <div className="bg-white flex flex-row justify-between items-center w-[428px] h-[52px] px-5 py-[15px] rounded-[10px] mt-2">
-                  <div className="flex flex-row items-center gap-2 p-0   hover:cursor-pointer">
+                  <div className=" flex flex-row items-center gap-2 p-0   hover:cursor-pointer">
                     <div
                       onClick={handleAmountModalState}
                       className="flex flex-row items-center gap-1.5 h-[27px] p-0 "
@@ -112,16 +132,26 @@ const Listing: React.FC<Props> = ({ setIsSelling }) => {
                         {listToken}
                       </div>
                     </div>
+
                     <SvgIcon.Vector
                       onClick={handleAmountModalState}
                       className="hover:scale-150"
                     />
+                    <div className="flex items-center hover:cursor-default">
+                      <p className="ml-1 text-[13px] text-grey/5">
+                        Available |
+                      </p>
+                      <p className="ml-1 text-[13px] text-grey/5">
+                        {listToken === "INJ" && walletInjAmount}
+                      </p>
+                    </div>
                   </div>
+
                   <input
                     type="number"
                     name="amount"
                     onChange={handleGetCoinValues}
-                    className={`Pretendard font-medium text-xl leading-6 text-[#191B23] text-right focus:outline-0 `}
+                    className={`Pretendard font-medium text-xl leading-6 text-[#191B23] text-right focus:outline-0 max-w-[130px]`}
                     placeholder="0"
                     min="0"
                   />
