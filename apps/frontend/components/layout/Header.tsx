@@ -63,8 +63,6 @@ const Header: React.FC = () => {
 
           const chainId = "injective-1";
           await window.keplr.enable(chainId);
-          const addressAndKey = await window.keplr.getKey(chainId);
-
           const offlineSigner = window.getOfflineSigner(chainId);
           const accounts = await offlineSigner.getAccounts();
           const address = accounts[0].address;
@@ -105,7 +103,7 @@ const Header: React.FC = () => {
   return (
     <div className="flex flex-row items-center justify-end gap-3 w-full h-[84px] pt-10 pb-0 px-6 bg-grey/10">
       <KeplrCard />
-      <ConnectButton text={connectText} />
+      <ConnectButton text={connectText} onClick={loadAddress} />
     </div>
   );
 };

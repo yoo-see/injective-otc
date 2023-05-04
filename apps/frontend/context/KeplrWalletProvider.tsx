@@ -47,18 +47,24 @@ const getKeplrFromWindow: () => Promise<Keplr> = () => {
 export type KeplrContextData = Readonly<{
   isOpen: boolean;
   key: Key | undefined;
+  address: string | undefined;
   connect: () => Promise<void>;
   signArbitrary: Keplr["signArbitrary"];
+  toggleNotifiCard: () => void;
 }>;
 
 const KeplrContext = createContext<KeplrContextData>({
   isOpen: false,
   key: undefined,
+  address: undefined,
   connect: () => {
     throw new Error("Unimplemented");
   },
   signArbitrary: () => {
     throw new Error("Unimplemented");
+  },
+  toggleNotifiCard: () => {
+    return;
   },
 });
 
@@ -69,6 +75,7 @@ export const KeplrWalletProvider: FC<PropsWithChildren<{}>> = ({
 }: React.PropsWithChildren<{}>) => {
   const [keplr, setKeplr] = useState<Keplr | undefined>(undefined);
   const [error, setError] = useState<string | undefined>(undefined);
+  const [address, setAddress] = useState<string | undefined>(undefined);
   const [key, setKey] = useState<Key | undefined>(undefined);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -92,16 +99,19 @@ export const KeplrWalletProvider: FC<PropsWithChildren<{}>> = ({
       return;
     }
 
-    if (isOpen) {
-      setIsOpen(false);
-      return;
-    }
-
     await keplr.enable("injective-1");
+    const offlineSigner = keplr.getOfflineSigner("injective-1");
+    const accounts = await offlineSigner.getAccounts();
+    const address = accounts[0].address;
     const key = await keplr.getKey("injective-1");
+
+    setAddress(address);
     setKey(key);
-    setIsOpen(true);
-  }, [isOpen, keplr]);
+  }, [keplr]);
+
+  const toggleNotifiCard = () => {
+    setIsOpen(!isOpen);
+  };
 
   const signArbitrary = useCallback<Keplr["signArbitrary"]>(
     async (chainId: string, signer: string, data: string | Uint8Array) => {
@@ -119,9 +129,11 @@ export const KeplrWalletProvider: FC<PropsWithChildren<{}>> = ({
     <KeplrContext.Provider
       value={{
         key,
+        address,
         connect,
         signArbitrary,
         isOpen,
+        toggleNotifiCard,
       }}
     >
       <div>

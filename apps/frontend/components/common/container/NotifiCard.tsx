@@ -10,13 +10,16 @@ import NotificationButton from "components/common/button/NotificationButton";
 import { useKeplrContext } from "../../../context/KeplrWalletProvider";
 
 export const KeplrConnectButton: React.FC = () => {
-  const { key, connect } = useKeplrContext();
-  return <NotificationButton onClick={connect} />;
+  const { key, connect, toggleNotifiCard } = useKeplrContext();
+  const onClick = () => {
+    connect();
+    toggleNotifiCard();
+  };
+  return <NotificationButton onClick={onClick} />;
 };
 
 export const KeplrCard: React.FC = () => {
   const { key, signArbitrary, isOpen } = useKeplrContext();
-  console.log(isOpen, "121212");
   const keyBase64 = useMemo(
     () =>
       key !== undefined
