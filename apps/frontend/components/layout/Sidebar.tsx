@@ -14,7 +14,7 @@ const Sidebar: React.FC = () => {
         href="/"
         className="flex items-center py-4 gap-2 text-white text-xl"
       >
-        <SvgIcon.Injective className="h-6 w-6" />
+        <SvgIcon.Logo />
         Injective OTC
       </Link>
       <div className="flex flex-col h-full mt-28">

@@ -9,16 +9,16 @@ import NotificationButton from "components/common/button/NotificationButton";
 
 import { useKeplrContext } from "../../../context/KeplrWalletProvider";
 
-export const KeplrConnectButton: React.FC = () => {
-  const { key, connect, toggleNotifiCard } = useKeplrContext();
+export const Notification: React.FC = () => {
+  const { key, toggleNotifiCard } = useKeplrContext();
   const onClick = () => {
-    connect();
+    if (!key) return;
     toggleNotifiCard();
   };
-  return <NotificationButton onClick={onClick} />;
+  return <NotificationButton onClick={() => onClick()} />;
 };
 
-export const KeplrCard: React.FC = () => {
+export const NotifiCard: React.FC = () => {
   const { key, signArbitrary, isOpen } = useKeplrContext();
   const keyBase64 = useMemo(
     () =>
@@ -30,7 +30,7 @@ export const KeplrCard: React.FC = () => {
 
   return (
     <div className="relative">
-      <KeplrConnectButton />
+      {key !== undefined && <Notification />}
       {key !== undefined && keyBase64 !== undefined ? (
         <NotifiContext
           dappAddress="injectiveotc"

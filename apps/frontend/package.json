@@ -11,6 +11,8 @@
     "lint:fix": "prettier --write \"**/*\" && next lint --fix"
   },
   "dependencies": {
+    "@notifi-network/notifi-core": "^0.65.0",
+    "@notifi-network/notifi-react-hooks": "^0.65.0",
     "next": "^13.1.6",
     "react": "18.2.0",
     "react-dom": "^18.2.0",

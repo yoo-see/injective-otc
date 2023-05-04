@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useNotifiClient } from "@notifi-network/notifi-react-hooks";
+import { useMemo } from "react";
 
-import { Coin } from "@keplr-wallet/types";
 import Button from "components/common/button/Button";
+import { useBalanceContext } from "context/BalanceProvider";
+import { useKeplrContext } from "context/KeplrWalletProvider";
 import { Listing } from "pages/buy";
 import { SvgIcon } from "public/icon";
 import { twMerge } from "tailwind-merge";
@@ -17,29 +19,14 @@ const OrderInformation: React.FC<Props> = ({
   goToBack,
   setIsOrdering,
 }) => {
-  const [walletUsdtAmount, setWalletUsdtAmount] = useState(0);
-  const [walletAddress, setWalletAddress] = useState(
-    "inj1wlqjas72cwpxhc5mj2hr6d60jxa35arunsqeg7",
+  const { USDT } = useBalanceContext();
+  const { key } = useKeplrContext();
+  const keyBase64 = useMemo(
+    () => (key !== undefined ? Buffer.from(key.pubKey).toString("base64") : ""),
+    [key],
   );
 
-  useEffect(() => {
-    fetch(
-      `https://k8s.testnet.lcd.injective.network/cosmos/bank/v1beta1/balances/${walletAddress}`,
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        const usdt = response.balances.find(
-          (balance: Coin) =>
-            balance.denom === "peggy0x87aB3B4C8661e07D6372361211B96ed4Dc36B1B5",
-        );
-        let usdtAmount = usdt.amount / 1000000;
-        setWalletUsdtAmount(usdtAmount);
-      })
-      .catch((error) => {
-        throw error;
-      });
-  }, []);
-  const isLowBalance = walletUsdtAmount < Number(listing.price.amount);
+  const isLowBalance = USDT < Number(listing.price.amount);
   const amountBoxClassName = isLowBalance
     ? "border-[0.8px] border-solid border-[#FF6060]"
     : "";
@@ -54,8 +41,26 @@ const OrderInformation: React.FC<Props> = ({
     balanceTextClassName,
   );
 
-  const onClickOrdering = () => {
+  const { broadcastMessage, getTopics } = useNotifiClient({
+    dappAddress: "injectiveotc",
+    walletPublicKey: keyBase64,
+    walletBlockchain: "INJECTIVE",
+    env: "Development",
+    accountAddress: key?.bech32Address ?? "",
+  });
+
+  const onClickOrdering = async () => {
     if (isLowBalance) return;
+
+    // broadcastMessage(
+    //   {
+    //     topic: t,
+    //     subject: s,
+    //     message: m,
+    //     isHolderOnly: i,
+    //   },
+    //   signer,
+    // );
     setIsOrdering(true);
   };
 
@@ -82,7 +87,7 @@ const OrderInformation: React.FC<Props> = ({
                 <p className="ml-2 text-grey/4 font-normal text-[15px]">
                   Available |
                 </p>
-                <p className={textMergedClassName}>{walletUsdtAmount}</p>
+                <p className={textMergedClassName}>{USDT}</p>
               </div>
               <p className="text-grey/1 font-semibold text-lg">
                 {listing.price.amount}

@@ -2312,6 +2312,33 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@injective-otc/frontend@workspace:apps/frontend":
+  version: 0.0.0-use.local
+  resolution: "@injective-otc/frontend@workspace:apps/frontend"
+  dependencies:
+    "@notifi-network/notifi-core": ^0.65.0
+    "@notifi-network/notifi-react-hooks": ^0.65.0
+    "@svgr/webpack": ^6.5.1
+    "@types/eslint": ^8
+    "@types/node": ^18.6.1
+    "@types/react": 18.0.23
+    "@types/react-dom": ^18.0.7
+    autoprefixer: ^10.4.13
+    babel-loader: ^9.0.0
+    eslint: ^8.26.0
+    glob: ^8.0.3
+    next: ^13.1.6
+    react: 18.2.0
+    react-dom: ^18.2.0
+    tailwind-merge: ^1.6.0
+    tailwind-scrollbar: ^3.0.0
+    tailwind-scrollbar-hide: ^1.1.7
+    tailwindcss: ^3.2.1
+    ts-node: ^10.9.1
+    typescript: ^4.8.4
+  languageName: unknown
+  linkType: soft
+
 "@istanbuljs/load-nyc-config@npm:^1.0.0":
   version: 1.1.0
   resolution: "@istanbuljs/load-nyc-config@npm:1.1.0"
@@ -2898,31 +2925,6 @@ __metadata:
   checksum: 52dc02259d98da517fae4cb3a0a3850227bdae4939dda1980b788a7670636ca2b4a01b58df03dd5f65c1e3cb70c50fa8ce5762b582b3f499ec30ee5ce1fd9380
   languageName: node
   linkType: hard
-
-"@omi/frontend@workspace:apps/frontend":
-  version: 0.0.0-use.local
-  resolution: "@omi/frontend@workspace:apps/frontend"
-  dependencies:
-    "@svgr/webpack": ^6.5.1
-    "@types/eslint": ^8
-    "@types/node": ^18.6.1
-    "@types/react": 18.0.23
-    "@types/react-dom": ^18.0.7
-    autoprefixer: ^10.4.13
-    babel-loader: ^9.0.0
-    eslint: ^8.26.0
-    glob: ^8.0.3
-    next: ^13.1.6
-    react: 18.2.0
-    react-dom: ^18.2.0
-    tailwind-merge: ^1.6.0
-    tailwind-scrollbar: ^3.0.0
-    tailwind-scrollbar-hide: ^1.1.7
-    tailwindcss: ^3.2.1
-    ts-node: ^10.9.1
-    typescript: ^4.8.4
-  languageName: unknown
-  linkType: soft
 
 "@protobufjs/aspromise@npm:^1.1.1, @protobufjs/aspromise@npm:^1.1.2":
   version: 1.1.2
@@ -6981,6 +6983,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"injective-otc@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "injective-otc@workspace:."
+  dependencies:
+    "@cosmjs/launchpad": ^0.27.1
+    "@keplr-wallet/types": ^0.11.59
+    "@next/eslint-plugin-next": ^13.0.2
+    "@notifi-network/notifi-core": ^0.65.0
+    "@notifi-network/notifi-frontend-client": ^0.65.0
+    "@notifi-network/notifi-react-card": ^0.65.0
+    "@trivago/prettier-plugin-sort-imports": ^3.4.0
+    "@types/eslint": ^8
+    "@types/node": ^18.6.1
+    "@types/react": 18.0.23
+    "@typescript-eslint/eslint-plugin": ^5.32.0
+    "@typescript-eslint/parser": ^5.20.0
+    eslint: ^8.13.0
+    eslint-config-next: ^13.0.2
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-json-format: ^2.0.1
+    eslint-plugin-jsx-a11y: ^6.5.1
+    eslint-plugin-react: ^7.29.4
+    eslint-plugin-react-hooks: ^4.4.0
+    eslint-plugin-unused-imports: ^2.0.0
+    prettier: ^2.7.1
+    recoil: ^0.7.7
+    tailwind-merge: ^1.12.0
+    typescript: ^4.8.4
+  languageName: unknown
+  linkType: soft
+
 "internal-slot@npm:^1.0.3":
   version: 1.0.3
   resolution: "internal-slot@npm:1.0.3"
@@ -8725,38 +8759,6 @@ __metadata:
   checksum: 0f17e99741ebfbd0fa55ce942f6184743d3070c61bd39221afc929c8422c4907618c8da694c6915bc04a83ab3224260c779ba37fc07bb668bdc5f33b66a902a4
   languageName: node
   linkType: hard
-
-"omi@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "omi@workspace:."
-  dependencies:
-    "@cosmjs/launchpad": ^0.27.1
-    "@keplr-wallet/types": ^0.11.59
-    "@next/eslint-plugin-next": ^13.0.2
-    "@notifi-network/notifi-core": ^0.65.0
-    "@notifi-network/notifi-frontend-client": ^0.65.0
-    "@notifi-network/notifi-react-card": ^0.65.0
-    "@trivago/prettier-plugin-sort-imports": ^3.4.0
-    "@types/eslint": ^8
-    "@types/node": ^18.6.1
-    "@types/react": 18.0.23
-    "@typescript-eslint/eslint-plugin": ^5.32.0
-    "@typescript-eslint/parser": ^5.20.0
-    eslint: ^8.13.0
-    eslint-config-next: ^13.0.2
-    eslint-config-prettier: ^8.5.0
-    eslint-plugin-import: ^2.26.0
-    eslint-plugin-json-format: ^2.0.1
-    eslint-plugin-jsx-a11y: ^6.5.1
-    eslint-plugin-react: ^7.29.4
-    eslint-plugin-react-hooks: ^4.4.0
-    eslint-plugin-unused-imports: ^2.0.0
-    prettier: ^2.7.1
-    recoil: ^0.7.7
-    tailwind-merge: ^1.12.0
-    typescript: ^4.8.4
-  languageName: unknown
-  linkType: soft
 
 "on-finished@npm:2.4.1":
   version: 2.4.1
