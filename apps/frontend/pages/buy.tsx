@@ -3,6 +3,7 @@ import { useState } from "react";
 import BuyList from "components/buy/BuyList";
 import OrderInformation from "components/buy/OrderInformation";
 import CompletedContainer from "components/common/container/CompletedContainer";
+import { useBalanceContext } from "context/BalanceProvider";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
@@ -17,6 +18,8 @@ const BuyPage: NextPage = () => {
   const [token, setToken] = useState<string>("");
   const [price, setPrice] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
+  const { USDT } = useBalanceContext();
+
   const setActiveTab = useSetRecoilState(tabState);
 
   const goToBack = () => {
@@ -49,7 +52,7 @@ const BuyPage: NextPage = () => {
         <>
           {isSelected ? (
             <OrderInformation
-              balance={341115}
+              balance={USDT}
               count={count}
               price={price}
               token={token}

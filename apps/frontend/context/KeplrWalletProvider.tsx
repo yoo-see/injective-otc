@@ -51,6 +51,7 @@ export type KeplrContextData = Readonly<{
   connect: () => Promise<void>;
   signArbitrary: Keplr["signArbitrary"];
   toggleNotifiCard: () => void;
+  getAccountsKeplr: () => Promise<void>;
 }>;
 
 const KeplrContext = createContext<KeplrContextData>({
@@ -65,6 +66,9 @@ const KeplrContext = createContext<KeplrContextData>({
   },
   toggleNotifiCard: () => {
     return;
+  },
+  getAccountsKeplr: () => {
+    throw new Error("Unimplemented");
   },
 });
 
@@ -113,6 +117,75 @@ export const KeplrWalletProvider: FC<PropsWithChildren<{}>> = ({
     setIsOpen(!isOpen);
   };
 
+  const getAccountsKeplr = useCallback(async () => {
+    if (!window.getOfflineSigner || !window.keplr) {
+      alert("Please install keplr extension");
+    } else {
+      if (window.keplr.experimentalSuggestChain) {
+        try {
+          await window.keplr.experimentalSuggestChain({
+            rpc: "https://rpc-injective.keplr.app",
+            rest: "https://lcd-injective.keplr.app",
+            chainId: "injective-1",
+            chainName: "Injective",
+            chainSymbolImageUrl:
+              "https://raw.githubusercontent.com/chainapsis/keplr-chain-registry/main/images/injective/chain.png",
+            bech32Config: {
+              bech32PrefixAccPub: "injpub",
+              bech32PrefixValPub: "injvaloperpub",
+              bech32PrefixAccAddr: "inj",
+              bech32PrefixConsPub: "injvalconspub",
+              bech32PrefixValAddr: "injvaloper",
+              bech32PrefixConsAddr: "injvalcons",
+            },
+            bip44: {
+              coinType: 60,
+            },
+            stakeCurrency: {
+              coinDenom: "INJ",
+              coinDecimals: 18,
+              coinMinimalDenom: "inj",
+              coinGeckoId: "injective-protocol",
+            },
+            currencies: [
+              {
+                coinDenom: "INJ",
+                coinDecimals: 18,
+                coinMinimalDenom: "inj",
+                coinGeckoId: "injective-protocol",
+              },
+            ],
+            feeCurrencies: [
+              {
+                coinDenom: "INJ",
+                coinDecimals: 18,
+                coinMinimalDenom: "inj",
+                coinGeckoId: "injective-protocol",
+                gasPriceStep: {
+                  low: 500000000,
+                  average: 1000000000,
+                  high: 1500000000,
+                },
+              },
+            ],
+            features: ["eth-address-gen", "eth-key-sign"],
+          });
+
+          const chainId = "injective-1";
+          await window.keplr.enable(chainId);
+          const offlineSigner = window.getOfflineSigner(chainId);
+          const accounts = await offlineSigner.getAccounts();
+          const address = accounts[0].address;
+          setAddress(address);
+        } catch {
+          alert("Failed to suggest the chain");
+        }
+      } else {
+        alert("Please use the recent version of keplr extension");
+      }
+    }
+  }, []);
+
   const signArbitrary = useCallback<Keplr["signArbitrary"]>(
     async (chainId: string, signer: string, data: string | Uint8Array) => {
       if (keplr !== undefined) {
@@ -134,6 +207,7 @@ export const KeplrWalletProvider: FC<PropsWithChildren<{}>> = ({
         signArbitrary,
         isOpen,
         toggleNotifiCard,
+        getAccountsKeplr,
       }}
     >
       <div>

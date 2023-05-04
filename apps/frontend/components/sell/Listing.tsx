@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import SelectTokenModal from "components/sell/SelectTokenModal";
+import { useBalanceContext } from "context/BalanceProvider";
 import { SvgIcon } from "public/icon";
 
 interface Props {
@@ -17,24 +18,7 @@ const collateralTokensArray = [
 
 const Listing: React.FC<Props> = ({ setIsSelling }) => {
   // amount of INJ in wallet
-  const [walletInjAmount, setWalletInjAmount] = useState(0);
-  const [walletAddress, setWalletAddress] = useState(
-    "inj1qmft4qnukhqm95w0ts85555j38tsuntcg6gfa5",
-  );
-
-  useEffect(() => {
-    fetch(
-      ` https://lcd-injective.keplr.app/cosmos/bank/v1beta1/balances/${walletAddress}`,
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        let injAmount = response.balances[0].amount.substring(0, 6) / 1000000;
-        setWalletInjAmount(injAmount);
-      })
-      .catch((error) => {
-        throw error;
-      });
-  }, []);
+  const { inj, wETH } = useBalanceContext();
 
   // quantities of tokens
   const [amountValue, setAmountValue] = useState(0);
@@ -142,7 +126,8 @@ const Listing: React.FC<Props> = ({ setIsSelling }) => {
                         Available |
                       </p>
                       <p className="ml-1 text-[13px] text-grey/5">
-                        {listToken === "INJ" && walletInjAmount}
+                        {listToken === "INJ" && inj}
+                        {listToken === "wETH" && wETH}
                       </p>
                     </div>
                   </div>
