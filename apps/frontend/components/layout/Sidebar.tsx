@@ -9,7 +9,7 @@ const Sidebar: React.FC = () => {
   };
 
   return (
-    <nav className="flex flex-col justify-between h-screen w-64 bg-[#242731] px-4 py-8">
+    <nav className="flex flex-col justify-between h-full w-64 bg-[#242731] px-4 py-8">
       <Link href="/" className="py-4">
         <SvgIcon.Logo />
       </Link>
