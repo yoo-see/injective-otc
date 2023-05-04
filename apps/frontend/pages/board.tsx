@@ -7,11 +7,15 @@ import { tabState } from "../states";
 
 const BoardPage: NextPage = () => {
   const activeTab = useRecoilValue(tabState);
+  const date1 = new Date("2023.5.2 12:30").toISOString();
+  const date2 = new Date("2023.5.3 19:40").toISOString();
+  const date3 = new Date("2023.5.4 17:15").toISOString();
+
   const data = {
     buyer: [
       {
-        orderId: "#12345678",
-        createdAt: "2023/03/24 09:29",
+        orderId: "#1",
+        createdAt: date1,
         amount: "On ethereum",
         price: 300,
         token: "On ethereum",
@@ -19,8 +23,8 @@ const BoardPage: NextPage = () => {
         status: "expired",
       },
       {
-        orderId: "#12345678",
-        createdAt: "2023/03/24 09:29",
+        orderId: "#12",
+        createdAt: date2,
         amount: "On ethereum",
         price: 300,
         token: "On ethereum",
@@ -28,8 +32,8 @@ const BoardPage: NextPage = () => {
         status: "processing",
       },
       {
-        orderId: "#12345678",
-        createdAt: "2023/03/24 09:29",
+        orderId: "#123",
+        createdAt: date3,
         amount: "On ethereum",
         price: 300,
         token: "On ethereum",
@@ -39,8 +43,8 @@ const BoardPage: NextPage = () => {
     ],
     seller: [
       {
-        orderId: "#12345678",
-        createdAt: "2023/03/24 09:29",
+        orderId: "#1234",
+        createdAt: date1,
         amount: "On ethereum",
         price: 300,
         token: "On ethereum",
@@ -48,8 +52,8 @@ const BoardPage: NextPage = () => {
         status: "expired",
       },
       {
-        orderId: "#12345678",
-        createdAt: "2023/03/24 09:29",
+        orderId: "#12345",
+        createdAt: date2,
         amount: "On ethereum",
         price: 300,
         token: "On ethereum",
@@ -57,8 +61,8 @@ const BoardPage: NextPage = () => {
         status: "processing",
       },
       {
-        orderId: "#12345678",
-        createdAt: "2023/03/24 09:29",
+        orderId: "#123456",
+        createdAt: date3,
         amount: "On ethereum",
         price: 300,
         token: "On ethereum",

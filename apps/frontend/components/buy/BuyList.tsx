@@ -71,7 +71,7 @@ const BuyList: React.FC<Props> = ({
                 <div>5</div>
                 <div>ETH</div>
               </span>
-              <span className="Pretendard font-normal text-[13px] leading-4 text-[#C6C6C6]">
+              <span className="font-normal text-[13px] leading-4 text-[#C6C6C6]">
                 On ethereum
               </span>
             </div>
@@ -153,7 +153,7 @@ const BuyList: React.FC<Props> = ({
                       <div>5</div>
                       <div>ETH</div>
                     </span>
-                    <span className="Pretendard font-normal text-[13px] leading-4 text-[#C6C6C6]">
+                    <span className="font-normal text-[13px] leading-4 text-[#C6C6C6]">
                       On ethereum
                     </span>
                   </div>
