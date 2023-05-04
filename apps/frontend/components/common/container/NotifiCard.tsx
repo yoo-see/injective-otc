@@ -33,7 +33,7 @@ export const KeplrCard: React.FC = () => {
       <KeplrConnectButton />
       {key !== undefined && keyBase64 !== undefined ? (
         <NotifiContext
-          dappAddress="omidapp"
+          dappAddress="injectiveotc"
           walletBlockchain="INJECTIVE"
           env="Development"
           walletPublicKey={keyBase64}
@@ -48,11 +48,11 @@ export const KeplrCard: React.FC = () => {
           }}
         >
           {isOpen && (
-            <div className="absolute top-12 right-0">
+            <div className="absolute top-12 right-0 w-[400px]">
               <NotifiSubscriptionCard
                 darkMode
                 inputs={{ userWallet: key.bech32Address }}
-                cardId="c6a038150262468586f0462108da8059"
+                cardId="305bb2604f244ecbb83f336481a8956b"
               />
             </div>
           )}

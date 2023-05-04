@@ -1,21 +1,13 @@
+import { Listing } from "pages/buy";
 import { SvgIcon } from "public/icon";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
-  setIsSelected: (isSelected: boolean) => void;
-  setChain: (chain: string) => void;
-  setToken: (token: string) => void;
-  setCount: (price: number) => void;
-  setPrice: (price: number) => void;
+  buyList: Listing[];
+  setListing: (listing: Listing) => void;
 }
 
-const BuyList: React.FC<Props> = ({
-  setIsSelected,
-  setChain,
-  setToken,
-  setCount,
-  setPrice,
-}) => {
+const BuyList: React.FC<Props> = ({ buyList, setListing }) => {
   const h1MergedClassName = twMerge(
     "Poppins w-[165px] h-[42px] not-italic font-medium text-[28px] leading-[42px] text-white opacity-80",
   );
@@ -23,73 +15,8 @@ const BuyList: React.FC<Props> = ({
     "Poppins w-[33px] h-[27px] not-italic font-normal text-lg leading-[27px] text-[#EAEAEA]",
   );
 
-  const onClickBuy = () => {
-    setChain("On ethereum");
-    setToken("ETH");
-    setCount(5);
-    setPrice(1519.01);
-    setIsSelected(true);
-  };
-
-  const handleCreateTr = (ele: string) => {
-    const onClickBuy = () => {
-      setChain("On ethereum");
-      setToken("ETH");
-      setCount(5);
-      setPrice(1519.01);
-      setIsSelected(true);
-    };
-
-    const tr = (
-      <tr className="h-[66px] flex flex-row items-center justify-between w-full">
-        <td className="align-middle w-full flex flex-row items-center">
-          <div className="flex items-center gap-2 ml-3 p-0">
-            <div>1.</div>
-            <SvgIcon.Weth />
-            <div className="flex flex-col items-start gap-0.5 h-9 p-0">
-              <span className="flex flex-row items-start gap-0.5">
-                <div>5</div>
-                <div>ETH</div>
-              </span>
-              <span className="font-normal text-[13px] leading-4 text-[#C6C6C6]">
-                On ethereum
-              </span>
-            </div>
-          </div>
-        </td>
-        <td className="w-full flex flex-row items-center">
-          <div className="flex flex-row items-center gap-1.5 p-0">
-            <SvgIcon.Weth />
-            <span>1519.00</span>
-          </div>
-        </td>
-        <td className="w-full align-middle gap-2 p-0 flex flex-row items-center">
-          <div className="flex items-center gap-2 p-0">
-            <SvgIcon.Weth />
-            <div className="flex flex-col items-start gap-0.5 h-9 p-0">
-              <span className="flex flex-row items-start gap-0.5">
-                <div>5</div>
-                <div>ETH</div>
-              </span>
-              <span className="font-normal text-[13px] leading-4 text-[#C6C6C6]">
-                On ethereum
-              </span>
-            </div>
-          </div>
-        </td>
-        <td className="w-full mr-3 flex flex-row items-center">
-          <span>2023.03.25 16:00</span>
-        </td>
-        <td className="w-full align-middle text-center p-0 flex flex-row items-center">
-          <button
-            className="bg-omi-blue w-[79px] h-8 rounded-[14px]"
-            onClick={onClickBuy}
-          >
-            Buy
-          </button>
-        </td>
-      </tr>
-    );
+  const onClickBuy = (listing: Listing) => {
+    setListing(listing);
   };
 
   return (
@@ -123,54 +50,49 @@ const BuyList: React.FC<Props> = ({
             </tr>
           </thead>
           <tbody className="block w-full max-h-[594px] font-normal overflow-y-scroll scrollbar-hide">
-            <tr className="h-[66px] flex flex-row items-center justify-between w-full">
-              <td className="align-middle w-full flex flex-row items-center">
-                <div className="flex items-center gap-2 ml-3 p-0">
-                  <div>1.</div>
-                  <SvgIcon.Weth />
-                  <div className="flex flex-col items-start gap-0.5 h-9 p-0">
-                    <span className="flex flex-row items-start gap-0.5">
-                      <div>5</div>
-                      <div>ETH</div>
-                    </span>
-                    <span className="font-normal text-[13px] leading-4 text-[#C6C6C6]">
-                      On ethereum
-                    </span>
-                  </div>
-                </div>
-              </td>
-              <td className="w-full flex flex-row items-center">
-                <div className="flex flex-row items-center gap-1.5 p-0">
-                  <SvgIcon.Weth />
-                  <span>1519.00</span>
-                </div>
-              </td>
-              <td className="w-full align-middle gap-2 p-0 flex flex-row items-center">
-                <div className="flex items-center gap-2 p-0">
-                  <SvgIcon.Weth />
-                  <div className="flex flex-col items-start gap-0.5 h-9 p-0">
-                    <span className="flex flex-row items-start gap-0.5">
-                      <div>5</div>
-                      <div>ETH</div>
-                    </span>
-                    <span className="font-normal text-[13px] leading-4 text-[#C6C6C6]">
-                      On ethereum
+            {buyList.map((listing: Listing, index: number) => (
+              <tr
+                key={index}
+                className="h-[66px] flex flex-row items-center justify-between w-full"
+              >
+                <td className="align-middle w-full flex flex-row items-center">
+                  <div className="flex items-center gap-2 ml-3 p-0">
+                    <div>{index + 1}.</div>
+                    <SvgIcon.Injective className="h-6 w-6" />
+                    <span className="flex flex-row items-center gap-0.5">
+                      <div>{listing.token.amount}</div>
+                      <div>{listing.token.denom}</div>
                     </span>
                   </div>
-                </div>
-              </td>
-              <td className="w-full mr-3 flex flex-row items-center">
-                <span>2023.03.25 16:00</span>
-              </td>
-              <td className="w-full align-middle text-center p-0 flex flex-row items-center">
-                <button
-                  className="bg-omi-blue w-[79px] h-8 rounded-[14px]"
-                  onClick={onClickBuy}
-                >
-                  Buy
-                </button>
-              </td>
-            </tr>
+                </td>
+                <td className="w-full flex flex-row items-center">
+                  <div className="flex flex-row items-center gap-1.5 p-0">
+                    <SvgIcon.Usdt className="w-6 h-6" />
+                    <span>{listing.price.amount}</span>
+                  </div>
+                </td>
+                <td className="w-full align-middle gap-2 p-0 flex flex-row items-center">
+                  <div className="flex items-center gap-2 p-0">
+                    <SvgIcon.Injective className="h-6 w-6" />
+                    <span className="flex flex-row items-start gap-0.5">
+                      <div>{listing.collateral.amount}</div>
+                      <div>{listing.collateral.denom}</div>
+                    </span>
+                  </div>
+                </td>
+                <td className="w-full mr-3 flex flex-row items-center">
+                  <span>{listing.createdAt}</span>
+                </td>
+                <td className="w-full align-middle text-center p-0 flex flex-row items-center">
+                  <button
+                    className="bg-omi-blue w-[79px] h-8 rounded-[14px]"
+                    onClick={() => onClickBuy(listing)}
+                  >
+                    Buy
+                  </button>
+                </td>
+              </tr>
+            ))}
             {/* {Data.map((ele) => {
               return handleCreateTr(ele);
             })} */}

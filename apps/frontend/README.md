@@ -1,1 +1,1 @@
-# omi/frontend
+# injective-otc/frontend

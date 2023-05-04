@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 
+import { Coin } from "@keplr-wallet/types";
 import SelectTokenModal from "components/sell/SelectTokenModal";
 import { SvgIcon } from "public/icon";
 
 interface Props {
   setIsSelling: (IsSelling: boolean) => void;
+}
+
+interface Listing {
+  token: Coin;
+  price: Coin;
+  collateral: Coin;
+  createdAt: string;
 }
 
 //list of Tokens & collateral Tokens
@@ -91,6 +99,26 @@ const Listing: React.FC<Props> = ({ setIsSelling }) => {
   const [sellButtonActive, setSellButtonActive] = useState(false);
 
   const onClickSelling = () => {
+    const buyListString = localStorage.getItem("buyList");
+    const buyList: Listing[] = buyListString ? JSON.parse(buyListString) : [];
+    const newBuyList = buyList.concat([
+      {
+        token: {
+          denom: listToken,
+          amount: String(amountValue),
+        },
+        price: {
+          denom: "USDT",
+          amount: String(priceValue),
+        },
+        collateral: {
+          denom: collateralToken,
+          amount: String(collateralValue),
+        },
+        createdAt: new Date().toJSON(),
+      },
+    ]);
+    localStorage.setItem("buyList", JSON.stringify(newBuyList));
     setIsSelling(true);
   };
 

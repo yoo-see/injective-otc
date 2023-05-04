@@ -10,8 +10,12 @@ const Sidebar: React.FC = () => {
 
   return (
     <nav className="flex flex-col justify-between h-full w-64 bg-[#242731] px-4 py-8">
-      <Link href="/" className="py-4">
-        <SvgIcon.Logo />
+      <Link
+        href="/"
+        className="flex items-center py-4 gap-2 text-white text-xl"
+      >
+        <SvgIcon.Injective className="h-6 w-6" />
+        Injective OTC
       </Link>
       <div className="flex flex-col h-full mt-28">
         <div className="flex items-center py-4 border-b-[0.5px] border-b-[rgba(255,255,255,0.12)] border-solid">

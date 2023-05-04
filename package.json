@@ -1,13 +1,13 @@
 {
-  "name": "omi",
+  "name": "injective-otc",
   "version": "1.0.0",
   "license": "Apache-2.0",
   "packageManager": "yarn@3.3.0",
   "scripts": {
-    "dev": "yarn workspace @omi/frontend next dev",
+    "dev": "yarn workspace @injective-otc/frontend next dev",
     "lint": "yarn eslint . --fix --ext .ts,.tsx,.js,.jsx && prettier --write .",
     "build": "yarn build:packages && yarn build:frontend",
-    "build:frontend": "yarn workspace @omi/frontend next build",
+    "build:frontend": "yarn workspace @injective-otc/frontend next build",
     "lint:next": "prettier --write \"**/*\" && next lint --fix"
   },
   "workspaces": {

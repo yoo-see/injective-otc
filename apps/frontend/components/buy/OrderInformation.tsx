@@ -1,27 +1,45 @@
+import { useEffect, useState } from "react";
+
+import { Coin } from "@keplr-wallet/types";
 import Button from "components/common/button/Button";
+import { Listing } from "pages/buy";
 import { SvgIcon } from "public/icon";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
-  balance: number;
-  price: number;
-  count: number;
-  token: string;
-  chain: string;
+  listing: Listing;
   goToBack: () => void;
   setIsOrdering: (IsOrdering: boolean) => void;
 }
 
 const OrderInformation: React.FC<Props> = ({
-  balance,
-  price,
-  count,
-  token,
-  chain,
+  listing,
   goToBack,
   setIsOrdering,
 }) => {
-  const isLowBalance = balance < price;
+  const [walletUsdtAmount, setWalletUsdtAmount] = useState(0);
+  const [walletAddress, setWalletAddress] = useState(
+    "inj1wlqjas72cwpxhc5mj2hr6d60jxa35arunsqeg7",
+  );
+
+  useEffect(() => {
+    fetch(
+      `https://k8s.testnet.lcd.injective.network/cosmos/bank/v1beta1/balances/${walletAddress}`,
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        const usdt = response.balances.find(
+          (balance: Coin) =>
+            balance.denom === "peggy0x87aB3B4C8661e07D6372361211B96ed4Dc36B1B5",
+        );
+        let usdtAmount = usdt.amount / 1000000;
+        setWalletUsdtAmount(usdtAmount);
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }, []);
+  const isLowBalance = walletUsdtAmount < Number(listing.price.amount);
   const amountBoxClassName = isLowBalance
     ? "border-[0.8px] border-solid border-[#FF6060]"
     : "";
@@ -64,9 +82,11 @@ const OrderInformation: React.FC<Props> = ({
                 <p className="ml-2 text-grey/4 font-normal text-[15px]">
                   Available |
                 </p>
-                <p className={textMergedClassName}>{balance}</p>
+                <p className={textMergedClassName}>{walletUsdtAmount}</p>
               </div>
-              <p className="text-grey/1 font-semibold text-lg">{price}</p>
+              <p className="text-grey/1 font-semibold text-lg">
+                {listing.price.amount}
+              </p>
             </div>
             {isLowBalance && (
               <div className="flex items-center mt-2">
@@ -81,14 +101,10 @@ const OrderInformation: React.FC<Props> = ({
             <p className="font-normal text-base text-grey/4 pb-2.5">You Buy</p>
             <div className="flex items-center justify-between p-4 bg-[#383943] rounded-[10px]">
               <div className="flex items-center">
-                <SvgIcon.Weth className="w-8 h-8" />
-                <p className="ml-2 text-grey/4 font-normal text-[15px]">|</p>
-                <p className="ml-1 text-[rgba(255,255,255,0.8)] font-normal text-[17px]">
-                  {chain}
-                </p>
+                <SvgIcon.Injective className="w-8 h-8" />
               </div>
               <p className="text-grey/1 font-semibold text-lg">
-                {count} {token}
+                {listing.token.amount} {listing.token.denom}
               </p>
             </div>
           </div>

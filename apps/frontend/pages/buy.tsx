@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+import { Coin } from "@keplr-wallet/types";
 import BuyList from "components/buy/BuyList";
 import OrderInformation from "components/buy/OrderInformation";
 import CompletedContainer from "components/common/container/CompletedContainer";
@@ -9,29 +10,41 @@ import { useSetRecoilState } from "recoil";
 
 import { tabState } from "../states";
 
+export interface Listing {
+  token: Coin;
+  price: Coin;
+  collateral: Coin;
+  createAt: string;
+}
+
 const BuyPage: NextPage = () => {
   const router = useRouter();
+  const [currentListing, setCurrentListing] = useState<Listing | null>(null);
+  const [buyList, setBuyList] = useState<Listing[]>([]);
   const [isOrdering, setIsOrdering] = useState<boolean>(false);
-  const [isSelected, setIsSelected] = useState<boolean>(false);
-  const [chain, setChain] = useState<string>("");
-  const [token, setToken] = useState<string>("");
-  const [price, setPrice] = useState<number>(0);
-  const [count, setCount] = useState<number>(0);
   const setActiveTab = useSetRecoilState(tabState);
 
   const goToBack = () => {
-    setIsSelected(false);
+    setCurrentListing(null);
   };
 
   const goToOTCMarket = () => {
     setIsOrdering(false);
-    setIsSelected(false);
+    setCurrentListing(null);
   };
 
   const goToDashboard = () => {
     setActiveTab({ tab: "buyer" });
     router.push("/board");
   };
+
+  useEffect(() => {
+    const buyListString = localStorage.getItem("buyList");
+    const newBuyList: Listing[] = buyListString
+      ? JSON.parse(buyListString)
+      : [];
+    setBuyList(newBuyList);
+  }, []);
 
   return (
     <div className="h-full">
@@ -47,23 +60,16 @@ const BuyPage: NextPage = () => {
         />
       ) : (
         <>
-          {isSelected ? (
+          {currentListing ? (
             <OrderInformation
-              balance={341115}
-              count={count}
-              price={price}
-              token={token}
-              chain={chain}
+              listing={currentListing}
               goToBack={goToBack}
               setIsOrdering={setIsOrdering}
             />
           ) : (
             <BuyList
-              setIsSelected={setIsSelected}
-              setChain={setChain}
-              setToken={setToken}
-              setCount={setCount}
-              setPrice={setPrice}
+              buyList={buyList}
+              setListing={(listing: Listing) => setCurrentListing(listing)}
             />
           )}
         </>

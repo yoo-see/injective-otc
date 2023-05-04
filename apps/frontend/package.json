@@ -1,5 +1,5 @@
 {
-  "name": "@omi/frontend",
+  "name": "@injective-otc/frontend",
   "version": "2.0.0",
   "license": "Apache-2.0",
   "scripts": {

@@ -1,1 +1,1 @@
-# omi
+# injective-otc
