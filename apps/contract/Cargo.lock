@@ -30,7 +30,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "atomic-order-example"
+name = "atomic-order"
 version = "0.1.0"
 dependencies = [
  "cosmwasm-schema",
@@ -315,17 +315,6 @@ dependencies = [
 
 [[package]]
 name = "cw-storage-plus"
-version = "0.16.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d9b6f91c0b94481a3e9ef1ceb183c37d00764f8751e39b45fc09f4d9b970d469"
-dependencies = [
- "cosmwasm-std",
- "schemars",
- "serde 1.0.152",
-]
-
-[[package]]
-name = "cw-storage-plus"
 version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "053a5083c258acd68386734f428a5a171b29f7d733151ae83090c6fcc9417ffa"
@@ -428,19 +417,6 @@ dependencies = [
  "block-buffer 0.10.3",
  "crypto-common",
  "subtle",
-]
-
-[[package]]
-name = "dummy"
-version = "1.0.0"
-dependencies = [
- "cosmwasm-std",
- "cw-storage-plus 0.16.0",
- "cw2 0.14.0",
- "injective-cosmwasm",
- "schemars",
- "serde 1.0.152",
- "thiserror",
 ]
 
 [[package]]

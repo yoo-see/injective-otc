@@ -7,10 +7,9 @@ on [Injective](https://injective.com).
 
 These contracts hold the core logic of the system.
 
-| Contract                                                    | Description                                                                                |
-| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| [`dummy`](./contracts/dummy/)                               | A simply template for starting a new contract                                              |
-| [`atomic-order-example`](./contracts/atomic-order-example/) | Example contract on how to do atomic market orders on Injective incl handling the response |
+| Contract                                    | Description                                                                     |
+| ------------------------------------------- | ------------------------------------------------------------------------------- |
+| [`atomic-order`](./contracts/atomic-order/) | contract on how to do OTC market orders on Injective incl handling the response |
 
 ## Development
 

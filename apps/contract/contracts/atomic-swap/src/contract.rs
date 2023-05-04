@@ -18,7 +18,7 @@ use crate::msg::{ExecuteMsg, InstantiateMsg};
 use crate::state::{ContractConfigState, SwapCacheState, STATE, SWAP_OPERATION_STATE};
 
 // version info for migration info
-const CONTRACT_NAME: &str = "crates.io:atomic-order-example";
+const CONTRACT_NAME: &str = "crates.io:atomic-order";
 const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 pub const ATOMIC_ORDER_REPLY_ID: u64 = 1u64;
 pub const DEPOSIT_REPLY_ID: u64 = 2u64;
