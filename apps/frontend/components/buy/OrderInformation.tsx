@@ -1,7 +1,5 @@
 import Button from "components/common/button/Button";
-import Image from "next/image";
 import { SvgIcon } from "public/icon";
-import { PngImage } from "public/img";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
@@ -62,12 +60,7 @@ const OrderInformation: React.FC<Props> = ({
             </p>
             <div className={boxMergedClassName}>
               <div className="flex items-center">
-                <Image
-                  src={PngImage.USDC}
-                  alt="Sample Image"
-                  width={32}
-                  height={32}
-                />
+                <SvgIcon.Usdt className="w-8 h-8" />
                 <p className="ml-2 text-grey/4 font-normal text-[15px]">
                   Available |
                 </p>
@@ -88,12 +81,7 @@ const OrderInformation: React.FC<Props> = ({
             <p className="font-normal text-base text-grey/4 pb-2.5">You Buy</p>
             <div className="flex items-center justify-between p-4 bg-[#383943] rounded-[10px]">
               <div className="flex items-center">
-                <Image
-                  src={PngImage.USDC}
-                  alt="Sample Image"
-                  width={32}
-                  height={32}
-                />
+                <SvgIcon.Weth className="w-8 h-8" />
                 <p className="ml-2 text-grey/4 font-normal text-[15px]">|</p>
                 <p className="ml-1 text-[rgba(255,255,255,0.8)] font-normal text-[17px]">
                   {chain}
