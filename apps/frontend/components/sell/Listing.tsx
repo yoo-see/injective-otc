@@ -8,14 +8,11 @@ interface Props {
 }
 
 //// mockup data
-const mockUpTokensArray = [
-  { image: SvgIcon.Ether, token: "Ether" },
-  { image: SvgIcon.Ether, token: "Bit" },
-  { image: SvgIcon.Ether, token: "Injective" },
-  { image: SvgIcon.Ether, token: "Cosmos" },
-  { image: SvgIcon.Ether, token: "Omosis" },
-  { image: SvgIcon.Ether, token: "BitcoinCash" },
-  { image: SvgIcon.Ether, token: "Solana" },
+const listTokensArray = [{ token: "INJ" }, { token: "wETH" }];
+const collateralTokensArray = [
+  { token: "INJ" },
+  { token: "wETH" },
+  { token: "USDT" },
 ];
 
 const Listing: React.FC<Props> = ({ setIsSelling }) => {
@@ -25,9 +22,9 @@ const Listing: React.FC<Props> = ({ setIsSelling }) => {
   const [collateralValue, setCollateralValue] = useState(0);
 
   // type of tokens
-  const [listToken, setListToken] = useState(mockUpTokensArray[0].token);
+  const [listToken, setListToken] = useState(listTokensArray[0].token);
   const [collateralToken, setCollateralToken] = useState(
-    mockUpTokensArray[0].token,
+    collateralTokensArray[0].token,
   );
 
   // modal handle state
@@ -104,7 +101,12 @@ const Listing: React.FC<Props> = ({ setIsSelling }) => {
                       onClick={handleAmountModalState}
                       className="flex flex-row items-center gap-1.5 h-[27px] p-0 "
                     >
-                      <SvgIcon.Weth className="w-6 h-6" />
+                      {listToken === "INJ" && (
+                        <SvgIcon.Injective className="h-6 w-6" />
+                      )}
+                      {listToken === "wETH" && (
+                        <SvgIcon.Weth className="h-6 w-6" />
+                      )}
 
                       <div className="font-midium text-base leading-[27px] text-[#191B23]">
                         {listToken}
@@ -153,7 +155,15 @@ const Listing: React.FC<Props> = ({ setIsSelling }) => {
                     className="flex flex-row items-center gap-2 p-0 hover:cursor-pointer"
                   >
                     <div className="flex flex-row items-center gap-1.5 h-[27px] p-0">
-                      <SvgIcon.Ether />
+                      {collateralToken === "INJ" && (
+                        <SvgIcon.Injective className="h-6 w-6" />
+                      )}
+                      {collateralToken === "wETH" && (
+                        <SvgIcon.Weth className="h-6 w-6" />
+                      )}
+                      {collateralToken === "USDT" && (
+                        <SvgIcon.Usdt className="h-6 w-6" />
+                      )}
                       <div className="font-midium text-base leading-[27px] text-[#191B23]">
                         {collateralToken}
                       </div>
@@ -196,14 +206,14 @@ const Listing: React.FC<Props> = ({ setIsSelling }) => {
           <SelectTokenModal
             handleModalFunc={handleAmountModalState}
             getTokenSelect={getTokenSelect}
-            tokens={mockUpTokensArray}
+            tokens={listTokensArray}
           />
         )}
         {collateralModalOpen && (
           <SelectTokenModal
             handleModalFunc={handleCollateralModalState}
             getTokenSelect={getTokenSelect}
-            tokens={mockUpTokensArray}
+            tokens={collateralTokensArray}
           />
         )}
       </div>
