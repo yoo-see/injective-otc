@@ -14,7 +14,7 @@ export interface Listing {
   token: Coin;
   price: Coin;
   collateral: Coin;
-  createAt: string;
+  createdAt: string;
 }
 
 const BuyPage: NextPage = () => {

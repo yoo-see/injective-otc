@@ -1,5 +1,4 @@
 import { SvgIcon } from "public/icon";
-import { PngImage } from "public/img";
 import { twMerge } from "tailwind-merge";
 
 import { TabType } from "../../states";
