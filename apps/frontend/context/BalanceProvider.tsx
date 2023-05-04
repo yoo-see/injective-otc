@@ -40,7 +40,7 @@ export const BalanceProvider: FC<PropsWithChildren<{}>> = ({
     getAccountsKeplr();
     if (address) {
       fetch(
-        ` https://lcd-injective.keplr.app/cosmos/bank/v1beta1/balances/${"inj1wlqjas72cwpxhc5mj2hr6d60jxa35arunsqeg7"}`,
+        ` https://lcd-injective.keplr.app/cosmos/bank/v1beta1/balances/${address}`,
       )
         .then((response) => response.json())
         .then((response) => {
