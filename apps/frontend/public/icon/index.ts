@@ -11,12 +11,15 @@ import IconChevronLeft from "./svg/chevron-left.svg";
 import IconCloseRed from "./svg/close-red.svg";
 import IconClose from "./svg/close.svg";
 import IconEther from "./svg/ether.svg";
+import IconInjective from "./svg/injective.svg";
 import IconDashboard from "./svg/layout-dashboard.svg";
 import IconMoreHorizontal from "./svg/more-horizontal.svg";
 import IconLogo from "./svg/omi-logo.svg";
 import IconSearch from "./svg/search.svg";
 import IconUsdc from "./svg/usdc.svg";
+import IconUsdt from "./svg/usdt.svg";
 import IconVector from "./svg/vector.svg";
+import IconWeth from "./svg/weth.svg";
 
 export const SvgIcon = {
   AlarmClockRed: IconAlarmClockRed,
@@ -38,4 +41,7 @@ export const SvgIcon = {
   Usdc: IconUsdc,
   Vector: IconVector,
   Dashboard: IconDashboard,
+  Injective: IconInjective,
+  Usdt: IconUsdt,
+  Weth: IconWeth,
 };

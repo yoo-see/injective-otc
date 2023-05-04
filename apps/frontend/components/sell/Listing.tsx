@@ -104,7 +104,8 @@ const Listing: React.FC<Props> = ({ setIsSelling }) => {
                       onClick={handleAmountModalState}
                       className="flex flex-row items-center gap-1.5 h-[27px] p-0 "
                     >
-                      <SvgIcon.Ether />
+                      <SvgIcon.Weth className="w-6 h-6" />
+
                       <div className="font-midium text-base leading-[27px] text-[#191B23]">
                         {listToken}
                       </div>
@@ -130,7 +131,7 @@ const Listing: React.FC<Props> = ({ setIsSelling }) => {
                 </span>
                 <div className="bg-white flex flex-row justify-between items-center w-[428px] h-[52px] px-5 py-[15px] rounded-[10px] mt-2">
                   <div className="flex flex-row items-center gap-2 p-0">
-                    <SvgIcon.Usdc />
+                    <SvgIcon.Usdt className="w-6 h-6" />
                   </div>
                   <input
                     type="number"
