@@ -29,7 +29,7 @@ const BuyPage: NextPage = () => {
   };
 
   const goToDashboard = () => {
-    setActiveTab({ tab: "Buyer" });
+    setActiveTab({ tab: "buyer" });
     router.push("/board");
   };
 

@@ -1,10 +1,12 @@
 import { atom } from "recoil";
 
+export type TabType = "seller" | "buyer";
+
 export interface ITabState {
-  tab: "Buyer" | "Seller";
+  tab: TabType;
 }
 
 export const tabState = atom<ITabState>({
   key: "tabState",
-  default: { tab: "Buyer" },
+  default: { tab: "buyer" },
 });

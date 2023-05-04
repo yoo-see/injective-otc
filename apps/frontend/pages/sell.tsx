@@ -18,7 +18,7 @@ const SellPage: NextPage = () => {
   };
 
   const goToDashboard = () => {
-    setActiveTab({ tab: "Seller" });
+    setActiveTab({ tab: "seller" });
     router.push("/board");
   };
 
