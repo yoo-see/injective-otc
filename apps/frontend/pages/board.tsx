@@ -74,9 +74,21 @@ const BoardPage: NextPage = () => {
       <div className="pt-6 pb-4">
         <TabBar />
       </div>
-      {data[activeTab.tab].map((ele) => (
-        <BoardItem key={ele.orderId} activeTab={activeTab.tab} />
-      ))}
+      <div className="grid gap-4 grid-cols">
+        {data[activeTab.tab].map((ele) => (
+          <BoardItem
+            key={ele.orderId}
+            activeTab={activeTab.tab}
+            orderId={ele.orderId}
+            createdAt={ele.createdAt}
+            amount={ele.amount}
+            price={ele.price}
+            token={ele.token}
+            count={ele.count}
+            status={ele.status}
+          />
+        ))}
+      </div>
     </div>
   );
 };
